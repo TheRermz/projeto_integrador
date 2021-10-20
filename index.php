@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="https://unpkg.com/feather-icons"></script>
-    <title>Hellmas TTV</title>
+    <title>Hellmas Reviews</title>
 
 </head>
 
