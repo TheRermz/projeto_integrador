@@ -14,6 +14,8 @@
     <meta name="description" content="Análise de jogos, filmes e séries das quais Murilo Fischer aka Hellmas já assistiu">
     <title>Hellmas once said - Landing Page</title>
 
+
+
 </head>
 
 <body>
@@ -21,7 +23,7 @@
     <?php
     include('include/header.php')
     ?>
-
+    <div class="topo"></div>
     <main>
 
 
@@ -49,6 +51,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -57,7 +60,7 @@
     <footer class="text-muted py-5">
         <div class="container">
             <p class="float-end mb-1">
-                <a href="#">Voltar ao Topo da página</a>
+                <button onclick="gotoTop()" id="TopPage" title="volta ao topo da página">Voltar ao Topo da página</button>
             </p>
             <p class="mb-1"> &copy; <a href="https://www.linkedin.com/in/mfischer-1997/" target="_blank" class="text-pirmary">Murilo Fischer</a> - Todos os direitos Reservados - <span class="text-primary"> 2021</span> </p>
 
@@ -68,6 +71,26 @@
 
 
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        gotoTop() = document.getElementById("TopPage");
+        window.onscroll = function(gotoTop) {
+            scrollFunction()
+        };
+        // botão so aparece se der um scroll > 20px
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                gotoTop().style.display = "block";
+            } else {
+                gotoTop.style.display = "none";
+            }
+        }
+
+        //pinto
+        function gotoTop() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script>
         feather.replace()
