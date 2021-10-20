@@ -7,7 +7,7 @@
                     <p class="text-muted">Olá! Meu nome é Murilo, pela internet conhecido como Hellmas, e este site tem como objetivo de fazer análises de jogos que joguei, filmes e séries que assiti. Sou apaixonado por técnologia e busco sempre estar antenado nas novidades. Sinta-se a vontade, pegue um café e vamos conversar</p>
                 </div>
                 <div class="col-sm-4 offset-md-1 py-4">
-                    <h4 class="text-white">Contact</h4>
+                    <h4 class="text-white">Contato</h4>
                     <ul class="list-unstyled">
                         <li><a href="https://twitter.com/therermz" target="_blank" class="text-white text-header text-decoration-none link-header"> <span data-feather="twitter"></span> &nbsp; Me siga no twitter!</a></li>
                         <li><a href="https://twitch.tv/therermz" target="_blank" class="text-white text-header text-decoration-none link-header"> <span data-feather="twitch"></span> &nbsp; Me
