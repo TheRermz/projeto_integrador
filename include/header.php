@@ -9,10 +9,12 @@
                 <div class="col-sm-4 offset-md-1 py-4">
                     <h4 class="text-white">Contact</h4>
                     <ul class="list-unstyled">
-                        <li><a href="https://twitter.com/therermz" target="_blank" class="text-white text-header"> <span data-feather="twitter"></span> &nbsp; Me siga no twitter!</a></li>
-                        <li><a href="https://twitch.tv/therermz" target="_blank" class="text-white text-header"> <span data-feather="twitch"></span> &nbsp; Me
+                        <li><a href="https://twitter.com/therermz" target="_blank" class="text-white text-header text-decoration-none link-header"> <span data-feather="twitter"></span> &nbsp; Me siga no twitter!</a></li>
+                        <li><a href="https://twitch.tv/therermz" target="_blank" class="text-white text-header text-decoration-none link-header"> <span data-feather="twitch"></span> &nbsp; Me
                                 siga na twitch!</a></li>
-                        <li><a href="contato.php" class="text-white text-header"> <span data-feather="mail"></span> &nbsp; Email de contato</a></li>
+                        <li><a href="contato.php" class="text-white text-header text-decoration-none link-header"> <span data-feather="mail"></span> &nbsp; Email de contato</a></li>
+                        <li><a href="https://github.com/TheRermz" target="_blank" class="text-white text-header text-decoration-none link-header"> <span data-feather="github"></span> &nbsp; Github</a></li>
+                        <li><a href="portifolio.php" target="_blank" class="text-white text-header text-decoration-none link-header"> <span data-feather="file"></span>&nbsp; Portifólio</a></li>
                     </ul>
                 </div>
             </div>
