@@ -29,11 +29,16 @@
                 <strong>&nbsp; Hellmas once said</strong>
             </a>
 
-
+            <div class="w-75 d-flex justify-content-md-end">
+                <a href=" signin.php" class="btn btn-primary my-2 me-3 ">Login</a> <!-- if the user is logged in, it will show its username, and clicking will send to profile -->
+                <a href=" signin.php" class="btn btn-secondary my-2 ">Logoff</a> <!-- will show only if the user has logged in -->
+            </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                <a href=" signin.php" class="btn btn-primary my-2">Login</a>
+
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
+
+
     </div>
 </header>

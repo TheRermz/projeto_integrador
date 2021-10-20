@@ -1,5 +1,5 @@
 # projeto_integrador
- Projeto Integrador para a UC de PHP (TI turma 40)<br>
+ Projeto Integrador para a UC de PHP (TI turma 40) - Professor Fernando<br>
  <h3> Propostas </h3>
  <ul>
  <li>Controle de acesso do usuário</li>
