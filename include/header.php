@@ -18,13 +18,18 @@
             </div>
         </div>
     </div>
+
     <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
+
             <a href="#" class="navbar-brand d-flex align-items-center">
                 <img src="assets/img/Therermz joia.png" alt="murilo fazendo joinha" width="50" height="50">
                 <strong>&nbsp; Hellmas once said</strong>
             </a>
+
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <a href=" signin.php" class="btn btn-primary my-2">Login</a>
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
