@@ -24,9 +24,9 @@
         <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
         </li> -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link disabled">Disabled</a>
-        </li>
+        </li> -->
         <form class="d-flex mb-1">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-primary " type="submit">Search</button>

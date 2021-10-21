@@ -59,7 +59,7 @@ require_once('connection/connect.php');
                 </label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
-            <a href="singup.php" class="text-primary py-1">Não tem conta? Cadastre-se</a>
+            <a href="../projeto_integrador/signup/signup.php" class="text-primary py-1">Não tem conta? Cadastre-se</a>
 
         </form>
     </div>
