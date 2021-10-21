@@ -1,5 +1,11 @@
 <?php
 require_once('connection/connect.php');
+// if ($con !== mysqli_connect_error()) {
+//     echo 'foi' . mysqli_connect_error($con);
+// } else {
+//     echo 'num foi' . mysqli_connect_error($con);
+// }
+
 ?>
 
 
