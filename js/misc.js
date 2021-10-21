@@ -12,8 +12,19 @@ function scrollFunction() {
     }
 }
 
-//pinto
+//scroll back to top
 function gotoTop() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+// show passwd function
+
+function showPasswd() {
+    var x = document.getElementById("floatingPassword");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
 }

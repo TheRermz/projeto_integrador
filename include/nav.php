@@ -1,5 +1,5 @@
-<nav class=" bg-dark navbar-dark position-relative ">
-    <ul class=" container nav nav-tabs justify-content-center">
+<nav class=" bg-dark navbar-dark">
+    <ul class="nav nav-tabs justify-content-center">
         <li class="nav-item">
             <a class="nav-link active bg-secondary text-white" aria-current="page" href="../projeto_integrador/">Home</a>
         </li>
