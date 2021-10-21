@@ -44,8 +44,8 @@ require_once('connection/connect.php');
             <h1 class="h3 mb-3 fw-normal d-inline-block">Faça o login</h1>
 
             <div class="form-floating">
-                <input type="username" class="form-control my-2" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Username</label>
+                <input type="text" class="form-control my-2" id="username" placeholder="name@example.com">
+                <label for="username">Username</label>
             </div>
             <div class="form-floating">
                 <input type="password" class="form-control " id="floatingPassword" placeholder="Password">
@@ -54,7 +54,9 @@ require_once('connection/connect.php');
 
             <div class="checkbox mb-3">
                 <label>
-                    <input type="checkbox" value="remember-me" onclick="showPasswd()"> Remember me
+                    <!-- <input type="image" value="remember-me" data-feather="eye" onclick="showPasswd()"> Mostrar Senha -->
+                    <!-- <a href="#" onclick="showPasswd()">ab</a> -->
+                    <button class="showPasswd mt-1" onclick="showPasswd()"><span data-feather="eye-off" id=" passwdEye" onchange="toggleEye()"></span> Mostrar Senha</button>
                 </label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>

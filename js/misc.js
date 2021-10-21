@@ -22,9 +22,23 @@ function gotoTop() {
 
 function showPasswd() {
     var x = document.getElementById("floatingPassword");
+
     if (x.type === "password") {
         x.type = "text";
+
     } else {
         x.type = "password";
+
     }
+}
+
+function toggleEye() {
+    var passwdType = document.getElementById("floatingPassword");
+    var eye = document.getElementById("passwdEye");
+    if (passwdType === "password") {
+        eye.html(feather.icons['eye-off'].toSvg());
+    } else {
+        eye.html(feather.icons['eye'].toSvg());
+    }
+
 }
