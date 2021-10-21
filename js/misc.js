@@ -2,11 +2,10 @@ link = document.getElementById("t");
 window.onscroll = function () {
     scrollFunction()
 };
-// botão so aparece se der um scroll > 20px
+// button appears only if the page has scrolled more than 20 px
 function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         link.style.display = "block";
-        link.style.transition = "all 2 0 ease-in-out"
     } else {
         link.style.display = "none";
     }
@@ -21,24 +20,31 @@ function gotoTop() {
 // show passwd function
 
 function showPasswd() {
-    var x = document.getElementById("floatingPassword");
+    const passwdType = document.getElementById("senha");
+    //const icon = document.getElementById$("senha");
+    if (passwdType.type === "password") {
+        passwdType.type = "text";
+        console.log(passwdType);
 
-    if (x.type === "password") {
-        x.type = "text";
 
     } else {
-        x.type = "password";
+        passwdType.type = "password";
+        console.log(passwdType);
 
     }
 }
 
-function toggleEye() {
-    var passwdType = document.getElementById("floatingPassword");
-    var eye = document.getElementById("passwdEye");
-    if (passwdType === "password") {
-        eye.html(feather.icons['eye-off'].toSvg());
-    } else {
-        eye.html(feather.icons['eye'].toSvg());
-    }
 
-}
+// todo --> function to toggle different icons when btn showPasswd clicked
+// function toggleEye() { 
+//     const passwdType = document.getElementById("floatingPassword");
+//     const eye = document.getElementById("passwdEye");
+
+//     if (passwdType === "password") {
+//         eye.setAttribute(feather.icons["eye-off"].toSvg());
+//     } else {
+//         eye.setAttribute(feather.icons["eye"].toSvg());
+//     }
+//     console.log(eye);
+
+// }

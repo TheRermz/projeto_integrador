@@ -44,3 +44,12 @@ body {
 
 
 }
+
+.checkbox input[type="checkbox"]{
+  display: none;
+}
+
+
+.chbox:hover{
+  cursor: pointer;
+}

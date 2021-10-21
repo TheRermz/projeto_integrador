@@ -4,10 +4,10 @@
             <a class="nav-link active bg-secondary text-white" aria-current="page" href="../projeto_integrador/">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" aria-current="page" href="#">Sobre</a>
+            <a class="nav-link text-white" aria-current="page" href="../projeto_integrador/about.php">Sobre</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" aria-current="page" href="#">Recomendações</a>
+            <a class="nav-link text-white" aria-current="page" href="../projeto_integrador/recommendations.php">Recomendações</a>
         </li>
         <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
