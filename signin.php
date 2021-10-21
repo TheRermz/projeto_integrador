@@ -24,7 +24,7 @@ require_once('connection/connect.php');
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/signin.css">
-    <script src="https://unpkg.com/feather-icons"></script>
+
     <meta name="description" content="Análise de jogos, filmes e séries das quais Murilo Fischer aka Hellmas já assistiu">
     <title>Hellmas once said - Sign In</title>
 
@@ -48,15 +48,14 @@ require_once('connection/connect.php');
                 <label for="username">Username</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control " id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Senha</label>
+                <input type="password" class="form-control " id="senha" placeholder="Password">
+                <label for="passwd">Senha</label>
             </div>
 
             <div class="checkbox mb-3">
-                <label>
-                    <!-- <input type="image" value="remember-me" data-feather="eye" onclick="showPasswd()"> Mostrar Senha -->
-                    <!-- <a href="#" onclick="showPasswd()">ab</a> -->
-                    <button class="showPasswd mt-1" onclick="showPasswd()"><span data-feather="eye-off" id=" passwdEye" onchange="toggleEye()"></span> Mostrar Senha</button>
+                <label class="chbox">
+                    <input type="checkbox" class="mb-3 btn btn-group" onclick="showPasswd()"><span data-feather="eye-off" id="passwdIcon" onchange="showPasswd()"></span> Mostrar Senha</button>
+
                 </label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
@@ -73,8 +72,6 @@ require_once('connection/connect.php');
             </p>
             <p class="mb-1"> &copy; <a href="https://www.linkedin.com/in/mfischer-1997/" target="_blank" class="text-pirmary">Murilo Fischer</a> - Todos os direitos Reservados - <span class="text-primary"> 2021</span> </p>
 
-
-
         </div>
     </footer>
 
@@ -85,6 +82,9 @@ require_once('connection/connect.php');
     <script>
         feather.replace()
     </script>
+    <script src="https://unpkg.com/feather-icons"></script>
+
+
 </body>
 
 </html>
