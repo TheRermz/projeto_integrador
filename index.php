@@ -1,3 +1,10 @@
+<?php
+require_once('connection/connect.php');
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
