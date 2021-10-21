@@ -15,13 +15,13 @@
     <title>Hellmas once said - Landing Page</title>
 
 
-
 </head>
 
 <body>
 
     <?php
-    include('include/header.php')
+    include('include/header.php');
+    include('include/nav.php');
     ?>
     <div class="topo"></div>
     <main>
@@ -29,7 +29,7 @@
 
 
         <div class="album py-5 bg-light">
-            <!-- repetição em php -->
+            <!-- php loop [do while] to load all articles [still an idea > make a featured article] -->
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div class="col">
@@ -60,7 +60,7 @@
     <footer class="text-muted py-5">
         <div class="container">
             <p class="float-end mb-1">
-                <button onclick="gotoTop()" id="TopPage" title="volta ao topo da página">Voltar ao Topo da página</button>
+                <button onclick="gotoTop()" id="t" class="text-primary" title="volta ao topo da página">Voltar ao Topo da página</button>
             </p>
             <p class="mb-1"> &copy; <a href="https://www.linkedin.com/in/mfischer-1997/" target="_blank" class="text-pirmary">Murilo Fischer</a> - Todos os direitos Reservados - <span class="text-primary"> 2021</span> </p>
 
@@ -72,16 +72,17 @@
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script>
-        gotoTop() = document.getElementById("TopPage");
-        window.onscroll = function(gotoTop) {
+        link = document.getElementById("t");
+        window.onscroll = function() {
             scrollFunction()
         };
         // botão so aparece se der um scroll > 20px
         function scrollFunction() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                gotoTop().style.display = "block";
+                link.style.display = "block";
+                link.style.transition = "all 2 0 ease-in-out"
             } else {
-                gotoTop.style.display = "none";
+                link.style.display = "none";
             }
         }
 

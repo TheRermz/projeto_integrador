@@ -4,5 +4,24 @@
 
 body{
     font-family: 'IBM Plex Sans', sans-serif !important;
+    height: 3000px;
+}
+/*T PARA TOP - CSS DO LINK QUE ENVIA AO TOPO DA PÁGINA*/
+#t {
+    display: none;
+    border: none;
+    z-index: 99;
+    font-weight: unset;
+    float: none !important;
+    background: transparent;
+    text-decoration: none;
+    position: fixed;
+    bottom: 3%;
+    font-weight: 300;
+    
 }
 
+#t:hover {
+    font-weight: bold;
+    
+}
