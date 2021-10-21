@@ -1,5 +1,5 @@
 <nav class=" bg-dark navbar-dark">
-    <ul class="nav nav-tabs justify-content-center">
+    <ul class="nav nav-tabs justify-content-center border-0">
         <li class="nav-item">
             <a class="nav-link active bg-secondary text-white" aria-current="page" href="../projeto_integrador/">Home</a>
         </li>
@@ -27,5 +27,9 @@
         <li class="nav-item">
             <a class="nav-link disabled">Disabled</a>
         </li>
+        <form class="d-flex mb-1">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary " type="submit">Search</button>
+        </form>
     </ul>
 </nav>
