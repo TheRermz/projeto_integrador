@@ -1,5 +1,5 @@
 <nav class=" bg-dark navbar-dark position-relative ">
-    <ul class=" container nav nav-tabs">
+    <ul class=" container nav nav-tabs justify-content-center">
         <li class="nav-item">
             <a class="nav-link active bg-secondary text-white" aria-current="page" href="../projeto_integrador/">Home</a>
         </li>
@@ -7,7 +7,7 @@
             <a class="nav-link text-white" aria-current="page" href="#">Sobre</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" aria-current="page" href="#">Home</a>
+            <a class="nav-link text-white" aria-current="page" href="#">Recomendações</a>
         </li>
         <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
