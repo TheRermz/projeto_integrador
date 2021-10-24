@@ -372,21 +372,21 @@
 
                         <p class="h4">Informações adicionais</p>
                         <div class="col-md-5">
-                            <label for="twitchuser" class="form-label">Username na twitch <span data-feather="twitch"></span></label>
+                            <label for="twitchuser" class="form-label"><span data-feather="twitch"></span> Username na twitch</label>
                             <input type="text" class="form-control" id="twitchuser" placeholder="Seu username na twitch">
                             <div class="invalid-feedback">
                                 Informe seu username da twitch.
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <label for="twitteruser" class="form-label">Twitter <span data-feather="twitter"></span></label>
+                            <label for="twitteruser" class="form-label"><span data-feather="twitter"></span> Username no twitter Twitter</label>
                             <input type="text" class="form-control" id="twitteruser" placeholder="informe seu twitter">
                             <div class="invalid-feedback">
                                 Infome seu user do twitter
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <label for="birthdate" class="form-label">Data de Nascimento</label>
+                            <label for="birthdate" class="form-label"><span data-feather="calendar"></span> Data de Nascimento</label>
                             <input class="form-control" type="date" name="birthdate" id="birthdate">
                             <div class="invalid-feedback">
                                 Informe sua data de nascimento.
