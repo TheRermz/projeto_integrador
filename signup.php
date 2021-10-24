@@ -76,7 +76,6 @@
                             <label for="country" class="form-label">País</label>
                             <select class="form-select" id="country" required>
                                 <option value="select" selected="selected">Selecione um país...</option>
-                                <option value="Brasil">Brasil</option>
                                 <option value="Afeganistão">Afeganistão</option>
                                 <option value="África do Sul">África do Sul</option>
                                 <option value="Albânia">Albânia</option>
@@ -105,6 +104,7 @@
                                 <option value="Bielorrússia">Bielorrússia</option>
                                 <option value="Bolívia">Bolívia</option>
                                 <option value="Botswana">Botswana</option>
+                                <option value="Brasil">Brasil</option>
                                 <option value="Brunei">Brunei</option>
                                 <option value="Bulgária">Bulgária</option>
                                 <option value="Burkina Faso">Burkina Faso</option>
