@@ -21,6 +21,7 @@ function gotoTop() {
 
 function showPasswd() {
     const passwdType = document.getElementById("senha");
+
     //const icon = document.getElementById$("senha");
     if (passwdType.type === "password") {
         passwdType.type = "text";

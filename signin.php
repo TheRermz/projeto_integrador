@@ -40,7 +40,7 @@ require_once('connection/connect.php');
 
     <div id="signinform" class="d-flex justify-content-center">
         <form>
-            <img class="mb-4" src="../projeto_integrador/assets/img/Therermz bonfire .png" class="d-d-inline-block" alt="" width="50" height="50">
+            <img class="mb-2 d-d-inline-block catto-margin" src="../projeto_integrador/assets/img/Therermz bonfire .png" alt="" width="50" height="50">
             <h1 class="h3 mb-3 fw-normal d-inline-block">Faça o login</h1>
 
             <div class="form-floating">
@@ -65,7 +65,7 @@ require_once('connection/connect.php');
     </div>
 
 
-    <footer class="text-muted py-5">
+    <footer class="my-5 pt-5 text-muted text-center text-small">
         <div class="container">
             <p class="float-end mb-1">
                 <button onclick="gotoTop()" id="t" class="text-primary" title="volta ao topo da página">Voltar ao Topo da página</button>
@@ -83,6 +83,7 @@ require_once('connection/connect.php');
         feather.replace()
     </script>
     <script src="https://unpkg.com/feather-icons"></script>
+
 
 
 </body>

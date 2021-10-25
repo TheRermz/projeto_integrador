@@ -29,3 +29,16 @@ body{
     color: black;
 }
 
+.catto-margin{
+    margin-right: 31%;
+}
+
+.checkbox input[type="checkbox"]{
+    display: none;
+  }
+  
+
+  .chbox:hover{
+    cursor: pointer;
+  }
+

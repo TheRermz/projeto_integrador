@@ -73,7 +73,7 @@ require_once('connection/connect.php');
         </div>
     </main>
 
-    <footer class="text-muted py-5">
+    <footer class="my-5 pt-5 text-muted text-center text-small">
         <div class="container">
             <p class="float-end mb-1">
                 <button onclick="gotoTop()" id="t" class="text-primary" title="volta ao topo da página">Voltar ao Topo da página</button>

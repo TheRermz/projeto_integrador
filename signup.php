@@ -62,6 +62,34 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-5">
+                            <label for="passwd" class="form-label">Senha</label>
+                            <div class="input-group has-validation">
+                                <input type="password" class="form-control" id="passwd" placeholder="Senha" required>
+                                <div class="invalid-feedback">
+                                    Favor insira a sua senha.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <label for="passwdrepeat" class="form-label">Repita a senha</label>
+                            <div class="input-group has-validation">
+                                <input type="password" class="form-control" id="passwdrepeat" placeholder="Senha" required>
+                                <div class="invalid-feedback">
+                                    Favor repetir a senha.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-2">
+                            <label>&nbsp;</label>
+                            <div class="checkbox">
+                                <label class="chbox mt-3">
+                                    <input type="checkbox" class="btn btn-group" onclick="showPasswd()"><span class="" data-feather="eye-off" id="passwdIcon" onchange="showPasswd()"></span> Mostrar Senha</button>
+
+                                </label>
+                            </div>
+                        </div>
 
                         <div class="col-12">
                             <label for="email" class="form-label">Email <span class="text-muted">(Opcional)</span></label>
@@ -421,6 +449,28 @@
         feather.replace()
     </script>
     <script src="js/form-validation.js"></script>
+
+    <script>
+        function showPasswd() {
+            const passwdType = document.getElementById("passwd");
+            const repeatpasswdType = document.getElementById("passwdrepeat");
+
+            //const icon = document.getElementById$("senha");
+            if (passwdType.type === "password" && repeatpasswdType.type === "password") {
+                passwdType.type = "text";
+                repeatpasswdType.type = "text";
+                console.log(passwdType);
+
+
+            } else {
+                passwdType.type = "password";
+                repeatpasswdType.type = "password";
+                console.log(passwdType);
+
+            }
+        }
+    </script>
+
 </body>
 
 </html>
