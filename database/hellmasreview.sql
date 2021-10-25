@@ -81,9 +81,9 @@ CREATE TABLE IF NOT EXISTS `paswd` (
 CREATE TABLE IF NOT EXISTS `users` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
-  `username` text NOT NULL,
+  `username` text NOT NULL UNIQUE,
   `md5_passwd` varchar(32) NOT NULL,
-  `type` enum('comum','editor','administrador','') NOT NULL,
+  `type` enum('comum','editor','administrador') NOT NULL,
   `ban` bit(1) NOT NULL,
   `status` bit(1) NOT NULL,
   `reg_day` date NOT NULL,
