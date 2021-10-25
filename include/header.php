@@ -28,7 +28,7 @@
 
 
             <a href="../projeto_integrador/" class="navbar-brand d-flex align-items-center">
-                <img src="assets/img/Therermz joia.png" alt="hellmas fazendo joinha" width="50" height="50">
+                <img src="../assets/img/Therermz joia.png" alt="hellmas fazendo joinha" width="50" height="50">
                 <strong>&nbsp; Hellmas once said</strong>
             </a>
 
