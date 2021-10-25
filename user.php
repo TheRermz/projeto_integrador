@@ -14,7 +14,7 @@
     <meta name="description" content="Análise de jogos, filmes e séries das quais Murilo Fischer aka Hellmas já assistiu">
     <title>Hellmas once said - Landing Page</title>
 
-
+    <!-- user control -> admin will have access to everything, editor will not have access to admin page. -->
 </head>
 
 <body>
@@ -24,11 +24,11 @@
     include('../projeto_integrador/include/nav.php');
     ?>
     <nav class="nav flex-column w-25 float-start py-5 align-content-center">
-        <a class="nav-link active" aria-current="page" href="#">Usuário</a>
-        <a class="nav-link" href="#">Alterar dados</a>
-        <a class="nav-link" href="#">Cancelar conta</a>
-        <a class="nav-link" href="#">Adicionar Artigo</a>
-        <a class="nav-link" href="#">Administrativo</a>
+        <a class="nav-link btn btn-secondary text-white mb-2 active" aria-current="page" href="#">Usuário</a>
+        <a class="nav-link btn btn-secondary text-white mb-2" href="#">Alterar dados</a>
+        <a class="nav-link btn btn-secondary text-white mb-2" href="#">Cancelar conta</a>
+        <a class="nav-link btn btn-secondary text-white mb-2" href="#">Adicionar Artigo</a>
+        <a class="nav-link btn btn-secondary text-white mb-2" href="#">Administrativo</a>
     </nav>
 
     <div class="col-12 container py-5">
@@ -64,14 +64,14 @@
 
             <div class="col-6">
                 <label for="country" class="form-label">País</label>
-                <select class="form-select" id="country" aria-readonly="true">
+                <select class="form-select" id="country" disabled>
                     <option value="select" selected="selected">Selecione um país...</option>
                 </select>
             </div>
 
             <div class="col-6">
                 <label for="state" class="form-label">Estado</label>
-                <select class="form-select" id="state" aria-readonly="true">
+                <select class="form-select" id="state" disabled>
                     <option value="">Selecione seu estado...</option>
 
                 </select>
@@ -93,11 +93,6 @@
 
             </div>
 
-
-
-
-
-
         </div>
 
         <footer class="my-5 pt-5 text-muted text-center text-small">
@@ -106,9 +101,6 @@
                     <button onclick="gotoTop()" id="t" class="text-primary" title="volta ao topo da página">Voltar ao Topo da página</button>
                 </p>
                 <p class="mb-1"> &copy; <a href="https://www.linkedin.com/in/mfischer-1997/" target="_blank" class="text-pirmary">Murilo Fischer</a> - Todos os direitos Reservados - <span class="text-primary"> 2021</span> </p>
-
-
-
             </div>
 
         </footer>
