@@ -33,12 +33,13 @@
         <main>
 
             <div class="col-md-12">
-                <h4 class="mb-3">Cadastro</h4>
+                <h2 class="mb-3">Deletar Conta</h2>
                 <form class="needs-validation" novalidate>
+                    <p class="h5">Olá Usuário, deseja mesmo <strong>DELETAR</strong> sua conta? Todos seus dados serão apagados do nosso banco de dados, portanto, todos os comentários ou artigo que tenha criado serão apagados </p>
                     <div class="row g-3">
                         <div class="col-sm-6">
                             <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="" value="" required>
+                            <input type="text" class="form-control" id="nome" placeholder="" value="" readonly>
                             <div class="invalid-feedback">
                                 Favor preencher com seu nome.
                             </div>
@@ -46,7 +47,7 @@
 
                         <div class="col-sm-6">
                             <label for="sobrenome" class="form-label">Sobrenome</label>
-                            <input type="text" class="form-control" id="sobrenome" placeholder="" value="" required>
+                            <input type="text" class="form-control" id="sobrenome" placeholder="" value="" readonly>
                             <div class="invalid-feedback">
                                 Favor preencher com seu sobrenome
                             </div>
@@ -56,104 +57,19 @@
                             <label for="username" class="form-label">Username</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text">@</span>
-                                <input type="text" class="form-control" id="username" placeholder="Username" required>
+                                <input type="text" class="form-control" id="username" placeholder="Username" readonly>
                                 <div class="invalid-feedback">
                                     Favor preencher o username que deseja usar.
                                 </div>
                             </div>
                         </div>
-                        <div class="col-5">
-                            <label for="passwd" class="form-label">Senha</label>
-                            <div class="input-group has-validation">
-                                <input type="password" class="form-control" id="passwd" placeholder="Senha" required>
-                                <div class="invalid-feedback">
-                                    Favor insira a sua senha.
-                                </div>
-                            </div>
+
+                        <hr class="my-4">
+                        <div class="d-flex justify-content-center px-5">
+                            <button class="w-25 btn btn-primary btn-lg m-2 " type="submit">Voltar à página principal</button>
+                            <button class="w-25 btn btn-danger btn-lg m-2" type="submit">Deletar Conta</button>
+
                         </div>
-                        <div class="col-5">
-                            <label for="passwdrepeat" class="form-label">Repita a senha</label>
-                            <div class="input-group has-validation">
-                                <input type="password" class="form-control" id="passwdrepeat" placeholder="Senha" required>
-                                <div class="invalid-feedback">
-                                    Favor repetir a senha.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-2">
-                            <label>&nbsp;</label>
-                            <div class="checkbox">
-                                <label class="chbox mt-3">
-                                    <input type="checkbox" class="btn btn-group" onclick="showPasswd()"><span class="" data-feather="eye-off" id="passwdIcon" onchange="showPasswd()"></span> Mostrar Senha</button>
-
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="email" class="form-label">Email <span class="text-muted">(Opcional)</span></label>
-                            <input type="email" class="form-control" id="email" placeholder="seu@email.com">
-                            <div class="invalid-feedback">
-                                Informe um email válido.
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <label for="country" class="form-label">País</label>
-                            <select class="form-select" id="country" required>
-                                <option value="select" selected="selected">Selecione um país...</option>
-
-                            </select>
-                            <div class="invalid-feedback">
-                                Selecione um país válido
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="state" class="form-label">Estado</label>
-                            <select class="form-select" id="state" required>
-                                <option value="">Selecione seu estado...</option>
-
-                            </select>
-                            <div class="invalid-feedback">
-                                Por favor, selecione seu estado.
-                            </div>
-                        </div>
-
-                        <p class="h4">Informações adicionais</p>
-                        <div class="col-md-5">
-                            <label for="twitchuser" class="form-label"><span data-feather="twitch"></span> Username na twitch</label>
-                            <input type="text" class="form-control" id="twitchuser" placeholder="Seu username na twitch">
-                            <div class="invalid-feedback">
-                                Informe seu username da twitch.
-                            </div>
-                        </div>
-                        <div class="col-md-5">
-                            <label for="twitteruser" class="form-label"><span data-feather="twitter"></span> Username no twitter Twitter</label>
-                            <input type="text" class="form-control" id="twitteruser" placeholder="informe seu twitter">
-                            <div class="invalid-feedback">
-                                Infome seu user do twitter
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="birthdate" class="form-label"><span data-feather="calendar"></span> Data de Nascimento</label>
-                            <input class="form-control" type="date" name="birthdate" id="birthdate">
-                            <div class="invalid-feedback">
-                                Informe sua data de nascimento.
-                            </div>
-                        </div>
-
-                    </div>
-
-
-
-
-                    <hr class="my-4">
-                    <div class="d-flex justify-content-center">
-                        <button class="w-50 btn btn-primary btn-lg" type="submit">Finalizar Cadastro</button>
-                    </div>
                 </form>
             </div>
     </div>
