@@ -1,5 +1,5 @@
 <?php
-require_once('connection/connect.php');
+require_once('../connection/connect.php');
 // if ($con !== mysqli_connect_error()) {
 //     echo 'foi' . mysqli_connect_error($con);
 // } else {
@@ -18,8 +18,8 @@ require_once('connection/connect.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
@@ -33,8 +33,8 @@ require_once('connection/connect.php');
 <body>
 
     <?php
-    include('include/header.php');
-    include('include/nav.php');
+    include('../include/header.php');
+    include('../include/nav.php');
     ?>
 
     <main>
@@ -84,8 +84,8 @@ require_once('connection/connect.php');
     </footer>
 
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/misc.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/misc.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script>
         feather.replace()
