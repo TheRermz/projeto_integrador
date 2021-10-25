@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2021 at 07:37 PM
+-- Generation Time: Oct 25, 2021 at 08:42 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -64,13 +64,15 @@ CREATE TABLE IF NOT EXISTS `paswd` (
   `user_id` int(11) NOT NULL,
   `passwd` varchar(32) NOT NULL,
   PRIMARY KEY (`passwd_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `paswd`
 --
 
-
+INSERT INTO `paswd` (`passwd_id`, `user_id`, `passwd`) VALUES
+(1, 1, 'cabeça'),
+(2, 2, 'batata');
 
 -- --------------------------------------------------------
 
@@ -81,9 +83,9 @@ CREATE TABLE IF NOT EXISTS `paswd` (
 CREATE TABLE IF NOT EXISTS `users` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
-  `username` text NOT NULL UNIQUE,
+  `username` text NOT NULL,
   `md5_passwd` varchar(32) NOT NULL,
-  `type` enum('comum','editor','administrador') NOT NULL,
+  `type` enum('comum','editor','administrador','') NOT NULL,
   `ban` bit(1) NOT NULL,
   `status` bit(1) NOT NULL,
   `reg_day` date NOT NULL,
@@ -93,13 +95,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `twitteruser` tinytext DEFAULT NULL,
   `birthdate` date DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-
+INSERT INTO `users` (`id_user`, `name`, `username`, `md5_passwd`, `type`, `ban`, `status`, `reg_day`, `user_country`, `user_state`, `twitchuser`, `twitteruser`, `birthdate`) VALUES
+(1, 'teste1', '123', 'fae28a0c93c32cb642f3108e5536b4c2', 'comum', b'0', b'1', '2021-10-20', 'Brasil', 'SP', NULL, NULL, NULL),
+(2, 'Murilo', 'therermz', '54ab162d35f277f5ff957426ec2e20d6', 'administrador', b'0', b'1', '2021-10-25', 'Brasil', 'SP', 'therermz', 'therermz', '1997-08-01');
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
