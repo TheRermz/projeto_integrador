@@ -14,6 +14,9 @@
         <li class="nav-item">
             <a class="nav-link text-white" aria-current="page" href="../projeto_integrador/recommendations.php">Recomendações</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" aria-current="page" href="../projeto_integrador/user.php">Página do Usuário</a>
+        </li>
         <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
             <ul class="dropdown-menu">
