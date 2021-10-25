@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2021 at 03:24 AM
+-- Generation Time: Oct 25, 2021 at 07:37 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `paswd` (
 --
 
 
+
 -- --------------------------------------------------------
 
 --
@@ -80,11 +81,17 @@ CREATE TABLE IF NOT EXISTS `paswd` (
 CREATE TABLE IF NOT EXISTS `users` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
-  `login_id` text NOT NULL,
+  `username` text NOT NULL,
   `md5_passwd` varchar(32) NOT NULL,
   `type` enum('comum','editor','administrador','') NOT NULL,
   `ban` bit(1) NOT NULL,
+  `status` bit(1) NOT NULL,
   `reg_day` date NOT NULL,
+  `user_country` tinytext NOT NULL,
+  `user_state` char(2) NOT NULL,
+  `twitchuser` tinytext DEFAULT NULL,
+  `twitteruser` tinytext DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
