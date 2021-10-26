@@ -33,8 +33,8 @@ require_once('../connection/connect.php');
 <body>
 
     <?php
-    include('../include/header.php');
-    include('../include/nav.php');
+    include('../include/headeradmin.php');
+    include('../include/navadmin.php');
     ?>
 
     <main>

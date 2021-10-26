@@ -1,5 +1,5 @@
 <?php
-require_once('../../connection/connect.php');
+require_once('../connection/connect.php');
 // if ($con !== mysqli_connect_error()) {
 //     echo 'foi' . mysqli_connect_error($con);
 // } else {
@@ -27,14 +27,24 @@ require_once('../../connection/connect.php');
     <meta name="description" content="Análise de jogos, filmes e séries das quais Murilo Fischer aka Hellmas já assistiu">
     <title>Hellmas once said - Landing Page</title>
 
+    <!-- text editor summernote -->
+
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
 
 </head>
 
 <body>
 
     <?php
-    include('../include/header.php');
-    include('../include/nav.php');
+    include('../include/headeradmin.php');
+    include('../include/navadmin.php');
     ?>
 
     <main>
@@ -47,23 +57,9 @@ require_once('../../connection/connect.php');
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div class="col">
                         <p class="h1">Artigos recentes</p>
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                            </svg>
-
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Veja mais!</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> <!-- acesso apenas por editor/admin -->
-                                    </div>
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
-                        </div>
+                        <form method="post">
+                            <textarea id="summernote" name="editordata"></textarea>
+                        </form>
                     </div>
 
                 </div>
@@ -87,6 +83,11 @@ require_once('../../connection/connect.php');
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/misc.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote();
+        });
+    </script>
     <script>
         feather.replace()
     </script>
