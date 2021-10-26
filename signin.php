@@ -40,7 +40,7 @@ require_once('connection/connect.php');
 
     <div id="signinform" class="d-flex justify-content-center">
         <form>
-            <img class="mb-2 d-d-inline-block catto-margin" src="../projeto_integrador/assets/img/Therermz bonfire .png" alt="" width="50" height="50">
+            <img class="mb-2 d-d-inline-block catto-margin" src="../projeto_integrador/assets/img/Therermz_bonfire.png" alt="" width="50" height="50">
             <h1 class="h3 mb-3 fw-normal d-inline-block">Faça o login</h1>
 
             <div class="form-floating">
