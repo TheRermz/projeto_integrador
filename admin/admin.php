@@ -37,6 +37,14 @@ require_once('../connection/connect.php');
     include('../include/navadmin.php');
     ?>
 
+    <nav class="nav flex-column w-25 float-start py-5 align-content-center">
+        <a class="nav-link btn btn-secondary text-white mb-2 active" aria-current="page" href="#">Usuário</a>
+        <a class="nav-link btn btn-secondary text-white mb-2" href="singup.php?">Alterar dados</a>
+        <a class="nav-link btn btn-secondary text-white mb-2" href="deleteacc.php">Cancelar conta</a>
+        <a class="nav-link btn btn-secondary text-white mb-2" href="../projeto_integrador/admin/addarticle.php">Adicionar Artigo</a>
+        <a class="nav-link btn btn-secondary text-white mb-2" href="../projeto_integrador/admin/admin.php">Administrativo</a>
+    </nav>
+
     <main>
 
 
