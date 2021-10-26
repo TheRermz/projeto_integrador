@@ -9,8 +9,6 @@ require_once('../connection/connect.php');
 ?>
 
 
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -30,7 +28,6 @@ require_once('../connection/connect.php');
     <!-- text editor summernote -->
 
     <!-- include libraries(jQuery, bootstrap) -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <!-- include summernote css/js -->
@@ -48,9 +45,6 @@ require_once('../connection/connect.php');
     ?>
 
     <main>
-
-
-
         <div class="album py-5 bg-light">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">

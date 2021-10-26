@@ -1,6 +1,6 @@
 <header>
     <div class="collapse bg-dark" id="navbarHeader">
-        <div class="container">
+        <div class="container m-0 b-0">
             <div class="row">
                 <div class="col-sm-8 col-md-7 py-4">
                     <h4 class="text-white">Sobre Mim</h4>

@@ -1,6 +1,6 @@
 <header>
-    <div class="collapse bg-dark" id="navbarHeader">
-        <div class="container">
+    <div class="collapse bg-dark " id="navbarHeader">
+        <div class="container  ">
             <div class="row">
                 <div class="col-sm-8 col-md-7 py-4">
                     <h4 class="text-white">Sobre Mim</h4>
@@ -21,19 +21,12 @@
         </div>
     </div>
 
-    <div class="navbar navbar-dark bg-dark shadow-sm  mb-0">
+    <div class="navbar navbar-dark bg-dark shadow-sm m-0">
         <div class=" container">
-
-
-
-
             <a href="../index.php" class="navbar-brand d-flex align-items-center">
                 <img src="../assets/img/Therermz_joia.png" alt="hellmas fazendo joinha" width="50" height="50">
                 <strong>&nbsp; Hellmas once said</strong>
             </a>
-
-
-
             <div class="w-75 d-flex justify-content-md-end">
                 <a href="signin.php" class="btn btn-primary my-2 me-3 ">Login</a> <!-- if the user is logged in, it will show its username, and clicking will send to profile -->
                 <a href="logoff.php" class="btn btn-secondary my-2 ">Logoff</a> <!-- will show only if the user has logged in -->
