@@ -52,13 +52,13 @@ require_once('../connection/connect.php');
 
 
         <div class="album py-5 bg-light">
-            <!-- php loop [do while] to load all articles [still an idea > make a featured article] -->
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div class="col">
+                    <div class="col-12">
                         <p class="h1">Artigos recentes</p>
-                        <form method="post">
-                            <textarea id="summernote" name="editordata"></textarea>
+                        <form method="post" class="col-12">
+                            <!-- help -->
+                            <textarea id="summernote" name="editordata" class="w-100"></textarea>
                         </form>
                     </div>
 
@@ -85,7 +85,15 @@ require_once('../connection/connect.php');
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#summernote').summernote();
+            $('#summernote').summernote({
+                height: 520, // set editor height
+                width: 1170, // editor width
+                minHeight: 520, // set minimum height of editor
+                maxHeight: 520, // set maximum height of editor
+                focus: true // set focus to editable area after initializing summernote
+
+            });
+
         });
     </script>
     <script>
