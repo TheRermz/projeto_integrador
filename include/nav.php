@@ -4,7 +4,7 @@
     }
 </style> -->
 <nav class=" bg-dark navbar-dark">
-    <ul class="nav nav-tabs justify-content-center border-0">
+    <ul class="nav nav-tabs justify-content-center">
         <li class="nav-item">
             <a class="nav-link active bg-secondary text-white" aria-current="page" href="../projeto_integrador/">Home</a>
         </li>
