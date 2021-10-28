@@ -47,3 +47,12 @@ body{
     resize: none;
     
 }
+
+.indexlink{
+    text-decoration: none;
+    color: #55595c;
+}
+
+.indexlink:hover{
+    color: whitesmoke;
+}
