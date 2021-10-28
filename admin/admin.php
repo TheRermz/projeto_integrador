@@ -40,7 +40,7 @@ require_once('../connection/connect.php');
     <nav class="nav flex-column w-25 float-start py-5 align-content-center">
         <a class="nav-link btn btn-secondary text-white mb-2 active" aria-current="page" href="../user.php?">Usuário</a>
         <a class="nav-link btn btn-secondary text-white mb-2" href="../user_edit.php?">Alterar dados</a>
-        <a class="nav-link btn btn-secondary text-white mb-2" href="../deleteacc.php">Cancelar conta</a>
+        <a class="nav-link btn btn-secondary text-white mb-2" href="../deleteacc.php?user_id=">Cancelar conta</a>
         <a class="nav-link btn btn-secondary text-white mb-2" href="addarticle.php">Adicionar Artigo</a>
         <a class="nav-link btn btn-secondary text-white mb-2" href="admin.php">Administrativo</a>
     </nav>
