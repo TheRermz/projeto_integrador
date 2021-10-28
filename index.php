@@ -1,10 +1,8 @@
 <?php
 require_once('connection/connect.php');
-// if ($con !== mysqli_connect_error()) {
-//     echo 'foi' . mysqli_connect_error($con);
-// } else {
-//     echo 'num foi' . mysqli_connect_error($con);
-// }
+$sqla = "SELECT articles.article_name, articles.abstract, articles.reg_time, articles.reg_date, images.image JOIN  images ON articles.image_id = images.image_id WHERE id_article DESC LIMIT 10";
+$qa = mysqli_query($con, $sqla);
+$resp = mysqli_fetch_assoc($qa);
 
 ?>
 
@@ -43,31 +41,37 @@ require_once('connection/connect.php');
 
         <div class="album py-5 bg-light">
             <!-- php loop [do while] to load all articles [still an idea > make a featured article] -->
+
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div class="col">
                         <p class="h1">Artigos recentes</p>
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                            </svg>
+                        <?php do { ?>
+                            <div class="card shadow-sm">
+                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                                </svg>
 
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Veja mais!</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> <!-- acesso apenas por editor/admin -->
+                                <div class="card-body">
+                                    <p class="card-text"><?php echo $resp['abstract'] ?></p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a class="indexlink" href="article.php?article_id=<?php echo $resp['article_id'] ?> "><button type="button" class="btn btn-sm btn-outline-secondary">Veja Mais</button></a>
+
+                                            <!-- if user !== comum  -->
+                                            <a class="indexlink mx-1" href="admin/addarticle.php?article_id=<?php echo $resp['article_id'] ?> "><button type="button" class="btn btn-sm btn-outline-secondary">Editar</button></a> <!-- acesso apenas por editor/admin -->
+                                        </div>
+                                        <small class="text-muted"><?php echo 'Artigo publicado às ' . $resp['reg_time'] ?></small>
                                     </div>
-                                    <small class="text-muted">9 mins</small>
                                 </div>
                             </div>
-                        </div>
+                        <?php } while ($resp = mysqli_fetch_assoc($qa)) ?>
                     </div>
 
                 </div>
             </div>
+
         </div>
     </main>
 
