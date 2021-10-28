@@ -42,3 +42,8 @@ body{
     cursor: pointer;
   }
 
+
+.abstract{
+    resize: none;
+    
+}
