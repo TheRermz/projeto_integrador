@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2021 at 08:48 PM
+-- Generation Time: Oct 28, 2021 at 07:58 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -384,11 +384,6 @@ CREATE TABLE IF NOT EXISTS `paswd` (
   PRIMARY KEY (`passwd_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `paswd`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -396,27 +391,24 @@ CREATE TABLE IF NOT EXISTS `paswd` (
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text NOT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` tinytext NOT NULL,
+  `surname` tinytext NOT NULL,
   `username` text NOT NULL,
   `md5_passwd` varchar(32) NOT NULL,
-  `type` enum('comum','editor','administrador''') NOT NULL,
+  `type` enum('comum','editor','administrador') NOT NULL,
   `ban` bit(1) NOT NULL,
   `status` bit(1) NOT NULL,
   `reg_day` date NOT NULL,
-  `user_country` tinytext NOT NULL,
-  `user_state` char(2) NOT NULL,
   `twitchuser` tinytext DEFAULT NULL,
   `twitteruser` tinytext DEFAULT NULL,
   `birthdate` date DEFAULT NULL,
-  PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `users`
---
-
-
+  `country_id` int(11) NOT NULL,
+  `state_id` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `username` (`username`) USING HASH
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
