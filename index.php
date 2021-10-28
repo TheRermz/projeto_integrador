@@ -1,6 +1,7 @@
 <?php
 require_once('connection/connect.php');
-$sqla = "SELECT articles.article_name, articles.abstract, articles.reg_time, articles.reg_date, images.image JOIN  images ON articles.image_id = images.image_id WHERE id_article DESC LIMIT 10";
+$sqla = "SELECT articles.article_id, articles.article_name, articles.abstract, articles.reg_time, articles.reg_date FROM articles order by article_id DESC LIMIT 10
+";
 $qa = mysqli_query($con, $sqla);
 $resp = mysqli_fetch_assoc($qa);
 
@@ -43,10 +44,12 @@ $resp = mysqli_fetch_assoc($qa);
             <!-- php loop [do while] to load all articles [still an idea > make a featured article] -->
 
             <div class="container">
+                <p class="h1 pb-2">Artigos recentes</p>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div class="col">
-                        <p class="h1">Artigos recentes</p>
-                        <?php do { ?>
+
+                    <?php do { ?>
+                        <div class="col">
+
                             <div class="card shadow-sm">
                                 <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
                                     <title>Placeholder</title>
@@ -54,6 +57,7 @@ $resp = mysqli_fetch_assoc($qa);
                                 </svg>
 
                                 <div class="card-body">
+                                    <p class="h5 card-text"><?php echo $resp['article_name'] ?></p>
                                     <p class="card-text"><?php echo $resp['abstract'] ?></p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
@@ -66,9 +70,9 @@ $resp = mysqli_fetch_assoc($qa);
                                     </div>
                                 </div>
                             </div>
-                        <?php } while ($resp = mysqli_fetch_assoc($qa)) ?>
-                    </div>
 
+                        </div>
+                    <?php } while ($resp = mysqli_fetch_assoc($qa)) ?>
                 </div>
             </div>
 
