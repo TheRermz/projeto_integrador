@@ -39,13 +39,13 @@
         <div class="row g-3">
             <div class="col-sm-6">
                 <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" placeholder="" value="" readonly>
+                <input type="text" class="form-control" id="nome" placeholder="" value="">
 
             </div>
 
             <div class="col-sm-6">
                 <label for="sobrenome" class="form-label">Sobrenome</label>
-                <input type="text" class="form-control" id="sobrenome" placeholder="" value="" readonly>
+                <input type="text" class="form-control" id="sobrenome" placeholder="" value="">
 
             </div>
 
@@ -60,20 +60,20 @@
 
             <div class="col-12">
                 <label for="email" class="form-label">Email <span class="text-muted">(Opcional)</span></label>
-                <input type="email" class="form-control" id="email" placeholder="seu@email.com" readonly>
+                <input type="email" class="form-control" id="email" placeholder="seu@email.com">
             </div>
 
 
             <div class="col-6">
                 <label for="country" class="form-label">País</label>
-                <select class="form-select" id="country" disabled>
+                <select class="form-select" id="country">
                     <option value="select" selected="selected">Selecione um país...</option>
                 </select>
             </div>
 
             <div class="col-6">
                 <label for="state" class="form-label">Estado</label>
-                <select class="form-select" id="state" disabled>
+                <select class="form-select" id="state">
                     <option value="">Selecione seu estado...</option>
 
                 </select>
@@ -82,16 +82,16 @@
             <p class="h4">Informações adicionais</p>
             <div class="col-5">
                 <label for="twitchuser" class="form-label"><span data-feather="twitch"></span> Username na twitch</label>
-                <input type="text" class="form-control" id="twitchuser" placeholder="Seu username na twitch" readonly>
+                <input type="text" class="form-control" id="twitchuser" placeholder="Seu username na twitch">
 
             </div>
             <div class="col-5">
                 <label for="twitteruser" class="form-label"><span data-feather="twitter"></span> Username no twitter Twitter</label>
-                <input type="text" class="form-control" id="twitteruser" placeholder="informe seu twitter" readonly>
+                <input type="text" class="form-control" id="twitteruser" placeholder="informe seu twitter">
             </div>
             <div class="col-2">
                 <label for="birthdate" class="form-label"><span data-feather="calendar"></span> Data de Nascimento</label>
-                <input class="form-control" type="date" name="birthdate" id="birthdate" readonly>
+                <input class="form-control" type="date" name="birthdate" id="birthdate">
 
             </div>
 
