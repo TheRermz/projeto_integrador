@@ -6,6 +6,7 @@ $qa = mysqli_query($con, $sqla);
 $resp = mysqli_fetch_assoc($qa);
 if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
     $id = $_GET["article_id"];
+
     $sqlc = "SELECT articles.article_id, articles.article_name, articles.abstract, articles.reg_time, articles.reg_date, article_content FROM articles where article_id = $id";
     $qc = mysqli_query($con, $sqlc);
     $respc = mysqli_fetch_assoc($qc);
@@ -50,16 +51,21 @@ if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
             <!-- php loop [do while] to load all articles [still an idea > make a featured article] -->
 
             <div class="container">
-                <p class="h1 pb-2">Artigos recentes</p>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <p class="h1 pb-2"><?php echo $respc['article_name'] ?></p>
+                <p class="h5 pb-2">Artigo adicionado no dia <?php $dpost = $respc['reg_date'];
+                                                            $dpostDMY = strtotime($dpost);
+                                                            $newdpost = date('d/m/Y', $dpostDMY);
+                                                            echo $newdpost ?> às <?php echo $respc['reg_time'] ?></p>
+                <div class="row row-cols-12 row-cols-sm-2 row-cols-md-3 g-3">
 
 
-                    <div class="col">
+                    <div class="container">
 
-                        <div class="d-flex justify-content-center">
-                            <div>
-                                <p class="align-content-center h2"><?php $respc['article_name'] ?></p>
-                            </div>
+
+                        <div class="w-100 py-1 ">
+
+                            <?php echo $respc['article_content'] ?>
+
                         </div>
 
                     </div>
