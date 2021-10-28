@@ -27,7 +27,9 @@
         <a class="nav-link btn btn-secondary text-white mb-2 active" aria-current="page" href="#">Usuário</a>
         <a class="nav-link btn btn-secondary text-white mb-2" href="user_edit.php?">Alterar dados</a>
         <a class="nav-link btn btn-secondary text-white mb-2" href="deleteacc.php">Cancelar conta</a>
+        <!-- if user !== comum -->
         <a class="nav-link btn btn-secondary text-white mb-2" href="../projeto_integrador/admin/addarticle.php">Adicionar Artigo</a>
+        <!-- if user === administrativo -->
         <a class="nav-link btn btn-secondary text-white mb-2" href="../projeto_integrador/admin/admin.php">Administrativo</a>
     </nav>
 
