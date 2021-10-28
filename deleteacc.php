@@ -1,3 +1,33 @@
+<?php
+require_once('connection/connect.php');
+
+
+
+if (isset($_POST['delete']) && $_POST['delete'] === 'deleteacc') {
+    $userid = $_POST["userid"];
+    $sql = "DELETE FROM users WHERE user_id = $userid";
+    if (mysqli_query($con, $sql)) {
+
+        header('Location:index.php');
+    } else {
+        die("Erro  ao deletar usuario $userid: " . $sql . "<br>" . mysqli_error($con));
+    }
+}
+
+if (isset($_POST["delete"]) && $_POST["delete"] === 'gotoindex') {
+    header('Location:index.php');
+}
+
+if (isset($_GET["user_id"]) && $_GET["user_id"] !== '') {
+    $user_id = $_GET["user_id"];
+    $sqlu = "SELECT user_id, name, surname, username FROM users WHERE user_id = $user_id";
+    $qu = mysqli_query($con, $sqlu);
+    $resp = mysqli_fetch_assoc($qu);
+}
+
+
+?>
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -13,7 +43,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
     <meta name="description" content="Análise de jogos, filmes e séries das quais Murilo Fischer aka Hellmas já assistiu">
-    <title>Hellmas once said - Landing Page</title>
+    <title>Hellmas once said - Deletar Conta</title>
 
 
 
@@ -34,40 +64,36 @@
 
             <div class="col-md-12">
                 <h2 class="mb-3">Deletar Conta</h2>
-                <form class="needs-validation" novalidate>
-                    <p class="h5">Olá Usuário, deseja mesmo <strong>DELETAR</strong> sua conta? Todos seus dados serão apagados do nosso banco de dados, portanto, todos os comentários ou artigo que tenha criado serão apagados </p>
+                <form action="" method="POST" class="needs-validation" novalidate>
+                    <p class="h5">Olá <?php echo $resp['username'] ?>, deseja mesmo <strong>DELETAR</strong> sua conta? Todos seus dados serão apagados do nosso banco de dados, portanto, todos os comentários ou artigo que tenha criado serão apagados </p>
                     <div class="row g-3">
+
                         <div class="col-sm-6">
                             <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="" value="" readonly>
-                            <div class="invalid-feedback">
-                                Favor preencher com seu nome.
-                            </div>
+                            <input type="text" class="form-control" id="nome" placeholder="" value="<?php echo $resp['name'] ?>" readonly>
+
                         </div>
 
                         <div class="col-sm-6">
                             <label for="sobrenome" class="form-label">Sobrenome</label>
-                            <input type="text" class="form-control" id="sobrenome" placeholder="" value="" readonly>
-                            <div class="invalid-feedback">
-                                Favor preencher com seu sobrenome
-                            </div>
+                            <input type="text" class="form-control" id="sobrenome" placeholder="" value="<?php echo $resp['surname'] ?>" readonly>
+
                         </div>
 
                         <div class="col-12">
                             <label for="username" class="form-label">Username</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text">@</span>
-                                <input type="text" class="form-control" id="username" placeholder="Username" readonly>
-                                <div class="invalid-feedback">
-                                    Favor preencher o username que deseja usar.
-                                </div>
+                                <input type="text" class="form-control" id="username" value="<?php echo $resp['username'] ?>" placeholder="Username" readonly>
+
                             </div>
                         </div>
 
                         <hr class="my-4">
                         <div class="d-flex justify-content-center px-5">
-                            <button class="w-25 btn btn-primary btn-lg m-2 " type="submit">Voltar à página principal</button>
-                            <button class="w-25 btn btn-danger btn-lg m-2" type="submit">Deletar Conta</button>
+                            <input type="text" name="userid" value="<?php echo $resp['user_id'] ?>">
+                            <button class="w-25 btn btn-primary btn-lg m-2 " type="submit" value="gotoindex" name="delete">Voltar à página principal</button>
+                            <button class="w-25 btn btn-danger btn-lg m-2" type="submit" value="deleteacc" name="delete">Deletar Conta</button>
 
                         </div>
                 </form>
