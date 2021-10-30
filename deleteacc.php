@@ -91,7 +91,7 @@ if (isset($_GET["user_id"]) && $_GET["user_id"] !== '') {
 
                         <hr class="my-4">
                         <div class="d-flex justify-content-center px-5">
-                            <input type="text" name="userid" value="<?php echo $resp['user_id'] ?>">
+                            <input type="hidden" name="userid" value="<?php echo $resp['user_id'] ?>">
                             <button class="w-25 btn btn-primary btn-lg m-2 " type="submit" value="gotoindex" name="delete">Voltar à página principal</button>
                             <button class="w-25 btn btn-danger btn-lg m-2" type="submit" value="deleteacc" name="delete">Deletar Conta</button>
 
