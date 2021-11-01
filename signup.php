@@ -22,8 +22,9 @@ if (isset($_POST["insert_user"]) !== '' && $_POST["insert_user"] === 'insert') {
     #INSERT QUERY
 
     $sql = "INSERT INTO users (user_id, name, surname, username, md5_passwd, type, ban, status, reg_day, twitchuser, twitteruser, birthdate, country_id,state_id)
-    VALUES (0, '$name', '$surname', '$usrname', 'md5passwd', 'comum', 0, 1, CURRENT_DATE(), '$twitchuser', '$twitteruser', '$birthdate', $country, $state);";
-    if (mysqli_query($con, $sql)) {
+    VALUES (0, '$name', '$surname', '$usrname', '$md5passwd', 'comum', 0, 1, CURRENT_DATE(), '$twitchuser', '$twitteruser', '$birthdate', $country, $state);";
+    $sqlpasswd = "INSERT INTO paswd(0, LAST_INSERT_ID(), '$password')";
+    if (mysqli_query($con, $sql) && mysqli_query($con, $sqlpasswd)) {
         header('Location:index.php');
     } else {
         die("Erro ao cadastrar o Usuário");
