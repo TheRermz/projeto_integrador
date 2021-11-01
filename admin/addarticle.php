@@ -1,10 +1,12 @@
 <?php
 require_once('../connection/connect.php');
-// if ($con !== mysqli_connect_error()) {
-//     echo 'foi' . mysqli_connect_error($con);
-// } else {
-//     echo 'num foi' . mysqli_connect_error($con);
-// }
+
+
+
+
+
+
+
 
 ?>
 
@@ -75,11 +77,14 @@ require_once('../connection/connect.php');
                             <div ng-app="textAngularTest" ng-controller="wysiwygeditor" class="container app py-2 mt-3">
                                 <h3>Escreva o Artigo</h3>
                                 <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled='disabled'></div>
+                                <textarea name="txtarea" id="txtarea" ng-model="htmlcontent" style="width: 100%" hidden></textarea>
+                                <div ng-bind-html="htmlcontent" hidden></div>
+                                <div ta-bind="text" ng-model="htmlcontent" ta-readonly='disabled' hidden>
+                                </div>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end px-2 my-2">
+                                    <button class="btn btn-primary me-md-2 btn-lg" type="submit">Adicionar Artigo</button>
+                                </div>
                             </div>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end px-2 my-2">
-                                <button class="btn btn-primary me-md-2 btn-lg" type="button">Adicionar Artigo</button>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
