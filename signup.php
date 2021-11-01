@@ -3,7 +3,8 @@ require_once('connection/connect.php');
 
 #data received via submit btn
 
-if (isset($_POST["insert_user"]) !== '' && $_POST["insert_user"] === 'insert') {
+if (isset($_POST["insert_user"]) && $_POST["insert_user"] === 'insert') {
+
     $name = mysqli_real_escape_string($con, $_POST["nome"]);
     $surname = mysqli_real_escape_string($con, $_POST["sobrenome"]);
     $usrname = mysqli_real_escape_string($con, $_POST["username"]);
@@ -22,13 +23,19 @@ if (isset($_POST["insert_user"]) !== '' && $_POST["insert_user"] === 'insert') {
     #INSERT QUERY
 
     $sql = "INSERT INTO users (user_id, name, surname, username, md5_passwd, type, ban, status, reg_day, twitchuser, twitteruser, birthdate, country_id,state_id)
-    VALUES (0, '$name', '$surname', '$usrname', '$md5passwd', 'comum', 0, 1, CURRENT_DATE(), '$twitchuser', '$twitteruser', '$birthdate', $country, $state);";
-    $sqlpasswd = "INSERT INTO paswd(0, LAST_INSERT_ID(), '$password')";
+    VALUES (0, '$name', '$surname', '$usrname', '$md5passwd', 'comum', 0, 1, CURRENT_DATE(), '$twitchuser', '$twitteruser', '$birthdate', $country, $state); ";
+    $last_id = $con->insert_id + 1;
+    $sqlpasswd = "INSERT INTO paswd (passwd_id, user_id, passwd) VALUES(0, $last_id, '$password');";
     if (mysqli_query($con, $sql) && mysqli_query($con, $sqlpasswd)) {
         header('Location:index.php');
     } else {
-        die("Erro ao cadastrar o Usuário");
+        die("Erro ao cadastrar o Usuário " . $sql . ' e '  . $sqlpasswd .  $name . ' alo ');
     }
+} else {
+    if (isset($_POST["insert_user"]) && $_POST["insert_user"] !== 'insert') {
+        echo 'tem erro ai em amigo 👌' . '<br>';
+        echo $name = mysqli_real_escape_string($con, $_POST['nome']) . $last_id;
+    };
 }
 
 # pull all countries from the db
@@ -82,11 +89,11 @@ $resps = mysqli_fetch_assoc($qc);
 
             <div class="col-md-12">
                 <h4 class="mb-3">Cadastro</h4>
-                <form class="needs-validation" novalidate ">
+                <form class="needs-validation" novalidate method="POST" ">
                     <div class=" row g-3">
                     <div class="col-sm-6">
                         <label for="nome" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="nome" placeholder="" value="" required>
+                        <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome" value="" required>
                         <div class="invalid-feedback">
                             Favor preencher com seu nome.
                         </div>
@@ -94,7 +101,7 @@ $resps = mysqli_fetch_assoc($qc);
 
                     <div class="col-sm-6">
                         <label for="sobrenome" class="form-label">Sobrenome</label>
-                        <input type="text" class="form-control" id="sobrenome" placeholder="" value="" required>
+                        <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome" name='sobrenome' required>
                         <div class="invalid-feedback">
                             Favor preencher com seu sobrenome
                         </div>
@@ -104,7 +111,7 @@ $resps = mysqli_fetch_assoc($qc);
                         <label for="username" class="form-label">Username</label>
                         <div class="input-group has-validation">
                             <span class="input-group-text">@</span>
-                            <input type="text" class="form-control" id="username" placeholder="Username" required>
+                            <input name="username" type="text" class="form-control" id="username" placeholder="Username" required>
                             <div class="invalid-feedback">
                                 Favor preencher o username que deseja usar.
                             </div>
@@ -113,7 +120,7 @@ $resps = mysqli_fetch_assoc($qc);
                     <div class="col-5">
                         <label for="passwd" class="form-label">Senha</label>
                         <div class="input-group has-validation">
-                            <input type="password" class="form-control" id="passwd" placeholder="Senha" required>
+                            <input type="password" class="form-control" id="passwd" placeholder="Senha" name="passwd" required>
                             <div class="invalid-feedback">
                                 Favor insira a sua senha.
                             </div>
@@ -122,7 +129,7 @@ $resps = mysqli_fetch_assoc($qc);
                     <div class="col-5">
                         <label for="passwdrepeat" class="form-label">Repita a senha</label>
                         <div class="input-group has-validation">
-                            <input type="password" class="form-control" id="passwdrepeat" placeholder="Indisponível" required readonly>
+                            <input name="passwdrepeat" type="password" class="form-control" id="passwdrepeat" placeholder="Indisponível" required readonly>
 
                             <div class="invalid-feedback">
                                 Favor repetir a senha.
@@ -143,7 +150,7 @@ $resps = mysqli_fetch_assoc($qc);
 
                     <div class="col-12">
                         <label for="email" class="form-label">Email <span class="text-muted">(Opcional)</span></label>
-                        <input type="email" class="form-control" id="email" placeholder="seu@email.com">
+                        <input name="email" type="email" class="form-control" id="email" placeholder="seu@email.com">
                         <div class="invalid-feedback">
                             Informe um email válido.
                         </div>
@@ -152,7 +159,7 @@ $resps = mysqli_fetch_assoc($qc);
 
                     <div class="col-md-6">
                         <label for="country" class="form-label">País</label>
-                        <select class="form-select" id="country" required>
+                        <select name="country" class="form-select" id="country" required>
 
                             <option value="" selected="selected">Selecione seu país...</option>
                             <?php do { ?>
@@ -167,7 +174,7 @@ $resps = mysqli_fetch_assoc($qc);
 
                     <div class="col-md-6">
                         <label for="state" class="form-label">Estado</label>
-                        <select class="form-select" id="state" required>
+                        <select name="state" class="form-select" id="state" required>
                             <option value="">Selecione seu estado...</option>
                             <?php do {                            ?>
                                 <option value="<?php echo $resps['state_id'] ?>"><?php echo $resps['state_abbr'] ?></option>
@@ -181,14 +188,14 @@ $resps = mysqli_fetch_assoc($qc);
                     <p class="h4">Informações adicionais</p>
                     <div class="col-md-5">
                         <label for="twitchuser" class="form-label"><span data-feather="twitch"></span> Username na twitch</label>
-                        <input type="text" class="form-control" id="twitchuser" placeholder="Seu username na twitch">
+                        <input name="twitchuser" type="text" class="form-control" id="twitchuser" placeholder="Seu username na twitch">
                         <div class="invalid-feedback">
                             Informe seu username da twitch.
                         </div>
                     </div>
                     <div class="col-md-5">
                         <label for="twitteruser" class="form-label"><span data-feather="twitter"></span> Username no twitter Twitter</label>
-                        <input type="text" class="form-control" id="twitteruser" placeholder="informe seu twitter">
+                        <input name="twitteruser" type="text" class="form-control" id="twitteruser" placeholder="informe seu twitter">
                         <div class="invalid-feedback">
                             Infome seu user do twitter
                         </div>
