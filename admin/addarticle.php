@@ -1,7 +1,18 @@
 <?php
 require_once('../connection/connect.php');
 
+if (isset($_POST["insert_article"]) && $_POST["insert_article"] === 'insert') {
+    $title = mysqli_real_escape_string($con, $_POST["title"]);
+    $category = $_POST["category"];
+    $author = mysqli_real_escape_string($con, $_POST["author"]);
+    $abstract = mysqli_real_escape_string($con, $_POST["abstract"]);
+    $article = mysqli_real_escape_string($con, $_POST["txtarea"]);
 
+    # todo -> add category, author and images to db
+    $sql = "INSERT INTO articles(article_id, article_name, abstract, reg_time, reg_date, article_content) VALUES(0, '$title', '$abstract', CURRENT_TIME(), CURRENT_DATE())";
+} else {
+    echo 'opa, tem um erro aí amigão';
+}
 
 
 
@@ -55,14 +66,14 @@ require_once('../connection/connect.php');
                                 <div class="col-4">
                                     <label for="category" class="h4">Categoria do artigo</label>
                                     <select name="category" id="category" class="py-1 form-select">
-                                        <option value="selcat">Selecione a Categoria</option>
+                                        <option value="">Selecione a Categoria</option>
                                     </select>
                                 </div>
                                 <!-- <div class="col-4">
                                 </div> -->
                                 <div class="col-4">
-                                    <label for="editor" class="h4">Autor do Artigo</label>
-                                    <select name="editor" id="editor" class="py-1 form-select float">
+                                    <label for="author" class="h4">Autor do Artigo</label>
+                                    <select name="author" id="author" class="py-1 form-select float">
                                         <option value="selcat">Selecione o Autor</option>
                                     </select>
                                 </div>
@@ -82,6 +93,7 @@ require_once('../connection/connect.php');
                                 <div ta-bind="text" ng-model="htmlcontent" ta-readonly='disabled' hidden>
                                 </div>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end px-2 my-2">
+                                    <input type="hidden" name="insert_article" value="insert">
                                     <button class="btn btn-primary me-md-2 btn-lg" type="submit">Adicionar Artigo</button>
                                 </div>
                             </div>
