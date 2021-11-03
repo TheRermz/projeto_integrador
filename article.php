@@ -56,20 +56,10 @@ if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
                                                             $dpostDMY = strtotime($dpost);
                                                             $newdpost = date('d/m/Y', $dpostDMY);
                                                             echo $newdpost ?> às <?php echo $respc['reg_time'] ?></p>
-                <div class="row row-cols-12 row-cols-sm-2 row-cols-md-3 g-3">
-
-
-                    <div class="container">
-
-
-                        <div class="w-100 py-1 ">
-
-                            <?php echo $respc['article_content'] ?>
-
-                        </div>
-
+                <div class="row row-cols-12 row-cols-sm-2 row-cols-md-3 g-3 py-2 m-1">
+                    <div class="d-block w-100">
+                        <?php echo $respc['article_content'] ?>
                     </div>
-
                 </div>
             </div>
 
