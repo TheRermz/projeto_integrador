@@ -1,10 +1,8 @@
 <?php
 require_once('connection/connect.php');
-// if ($con !== mysqli_connect_error()) {
-//     echo 'foi' . mysqli_connect_error($con);
-// } else {
-//     echo 'num foi' . mysqli_connect_error($con);
-// }
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 ?>
 
@@ -39,16 +37,16 @@ require_once('connection/connect.php');
     ?>
 
     <div id="signinform" class="d-flex justify-content-center">
-        <form>
+        <form action="login.php" method="POST">
             <img class="mb-2 d-d-inline-block catto-margin" src="../projeto_integrador/assets/img/Therermz_bonfire.png" alt="" width="50" height="50">
             <h1 class="h3 mb-3 fw-normal d-inline-block">Faça o login</h1>
 
             <div class="form-floating">
-                <input type="text" class="form-control my-2" id="username" placeholder="name@example.com">
+                <input type="text" class="form-control my-2" name="username" id="username" placeholder="name@example.com">
                 <label for="username">Username</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control " id="senha" placeholder="Password">
+                <input type="password" name="passwd" class="form-control " id="senha" placeholder="Password">
                 <label for="passwd">Senha</label>
             </div>
 
@@ -60,6 +58,47 @@ require_once('connection/connect.php');
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
             <a href="../projeto_integrador/signup.php" class="text-primary py-1">Não tem conta? Cadastre-se</a>
+            <div>
+                <?php
+
+                if (isset($_SESSION['emptylogin'])) {
+                    echo '<div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">';
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                    echo $_SESSION['emptylogin'];
+                    echo '</div>';
+                    unset($_SESSION['emptylogin']);
+                }
+
+                if (isset($_SESSION['register'])) {
+                    echo '<div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">';
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                    echo $_SESSION['register'];
+                    echo '</div>';
+                    unset($_SESSION['register']);
+                }
+
+                // if (isset($_SESSION['banned'])) {
+
+                //     echo '<div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">';
+                //     echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                //     echo $_SESSION['banned'];
+                //     echo '</div>';
+                //     unset($_SESSION['banned']);
+                // }
+
+                if (isset($_SESSION['loginerror'])) {
+                    echo '<div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">';
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                    echo $_SESSION['loginerror'];
+                    echo '</div>';
+                    unset($_SESSION['loginerror']);
+                }
+
+
+
+
+                ?>
+            </div>
 
         </form>
     </div>
