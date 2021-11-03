@@ -5,8 +5,8 @@ require_once('connection/connect.php');
 
 if (isset($_POST["insert_user"]) && $_POST["insert_user"] === 'insert') {
 
-    $name = mysqli_real_escape_string($con, $_POST["nome"]);
-    $surname = mysqli_real_escape_string($con, $_POST["sobrenome"]);
+    $name = mysqli_real_escape_string($con, $_POST["name"]);
+    $surname = mysqli_real_escape_string($con, $_POST["surname"]);
     $usrname = mysqli_real_escape_string($con, $_POST["username"]);
     #   if ($_POST["passwd"] === $_POST["repeatpasswd"]) {
     $md5passwd = md5(mysqli_real_escape_string($con, $_POST["senha"]));
@@ -92,16 +92,16 @@ $resps = mysqli_fetch_assoc($qc);
                 <form class="needs-validation" novalidate method="POST" ">
                     <div class=" row g-3">
                     <div class="col-sm-6">
-                        <label for="nome" class="form-label">Nome</label>
-                        <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome" value="" required>
+                        <label for="name" class="form-label">Nome</label>
+                        <input name="name" type="text" class="form-control" id="name" placeholder="Nome" value="" required>
                         <div class="invalid-feedback">
                             Favor preencher com seu nome.
                         </div>
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="sobrenome" class="form-label">Sobrenome</label>
-                        <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome" name='sobrenome' required>
+                        <label for="surname" class="form-label">Sobrenome</label>
+                        <input type="text" class="form-control" id="surname" placeholder="Sobrenome" name='surname' required>
                         <div class="invalid-feedback">
                             Favor preencher com seu sobrenome
                         </div>
