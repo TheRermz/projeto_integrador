@@ -2,7 +2,7 @@
 require_once('connection/connect.php');
 
 # if there is no session active --> will start a session
-if (isset($_SESSION)) {
+if (!isset($_SESSION)) {
     session_start();
 }
 
@@ -26,17 +26,17 @@ if (isset($_POST["username"]) && $_POST["username"] != '' && isset($_POST["passw
             header('Location:user.php');
         } else {
             $_SESSION["register"] = 'Apenas usuários cadastrados podem acessar a área de usuário';
-            header('Location:index.php');
+            header('Location:signin.php');
         }
-        if ($_SESSION["ban"] === 1) {
-            $_SESSION['banned'] = 'Este usuário está banido';
-            header('location:singin.php');
-        }
+        #  if ($usrresp["ban"] === 1) {
+        #      $_SESSION['*banned'] = 'Este usuário está banido';
+        #     header('location:signin.php');
+        # }
     }
 
     $_SESSION["loginerror"] = 'Usuário ou Senha inválidos';
-    header('location:singin.php');
+    header('location:signin.php');
 } else {
     $_SESSION["emptylogin"] = 'É necessário preencher o usuário e senha';
-    header('location:singin.php');
+    header('location:signin.php');
 }
