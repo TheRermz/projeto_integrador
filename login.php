@@ -22,7 +22,7 @@ if (isset($_POST["username"]) && $_POST["username"] != '' && isset($_POST["passw
         $_SESSION["type"] = $usrresp['type'];
         $_SESSION["ban"] = $usrresp['ban'];
 
-        if ($_SESSION["type"] === 'administrador' || $_SESSION["tipo"] === 'editor' || $_SESSION["comum"]) {
+        if ($_SESSION["type"] === 'administrador' || $_SESSION["type"] === 'editor' || $_SESSION["type"] === 'comum') {
             header('Location:user.php');
         } else {
             $_SESSION["register"] = 'Apenas usuários cadastrados podem acessar a área de usuário';
@@ -32,10 +32,10 @@ if (isset($_POST["username"]) && $_POST["username"] != '' && isset($_POST["passw
         #      $_SESSION['*banned'] = 'Este usuário está banido';
         #     header('location:signin.php');
         # }
+    } else {
+        $_SESSION["loginerror"] = 'Usuário ou Senha inválidos';
+        header('location:signin.php');
     }
-
-    $_SESSION["loginerror"] = 'Usuário ou Senha inválidos';
-    header('location:signin.php');
 } else {
     $_SESSION["emptylogin"] = 'É necessário preencher o usuário e senha';
     header('location:signin.php');

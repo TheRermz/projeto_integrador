@@ -77,7 +77,7 @@ if (!isset($_SESSION)) {
                     unset($_SESSION['register']);
                 }
 
-                // if (isset($_SESSION['banned'])) {
+                // if (isset($_SESSION['ban'])) {
 
                 //     echo '<div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">';
                 //     echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
