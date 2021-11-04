@@ -12,7 +12,6 @@ if (isset($_POST["insert_article"]) && $_POST["insert_article"] === 'insert') {
     $abstract = mysqli_real_escape_string($con, $_POST["abstract"]);
     $article = mysqli_real_escape_string($con, $_POST["txtarea"]);
 
-    # todo -> add category, author and images to db
     $sql = "INSERT INTO articles(article_id, article_name, abstract, reg_time, reg_date, article_content, author, category_id) VALUES(0, '$title', '$abstract', CURRENT_TIME(), CURRENT_DATE(), '$article', '$author', '$category')";
     if (mysqli_query($con, $sql)) {
         header('Location:../index.php');
@@ -20,7 +19,14 @@ if (isset($_POST["insert_article"]) && $_POST["insert_article"] === 'insert') {
         die('Erro ao adicionar o artigo ' . $con . ' e ' . $sql);
     }
 } else {
-    echo 'opa, tem um erro aí amigão';
+    #echo 'opa, tem um erro aí amigão';
+}
+
+if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
+    $id = $_GET["article_id"];
+    $sqla = "SELECT * FROM articles join category on articles.category_id = category.category_id where article_id = $id";
+    $qa = mysqli_query($con, $sqla);
+    $respa = mysqli_fetch_assoc($qa);
 }
 
 
@@ -70,12 +76,12 @@ if (isset($_POST["insert_article"]) && $_POST["insert_article"] === 'insert') {
                             <div class="col-12 row row-cols-12 m-0">
                                 <div class="col-4">
                                     <label for="title" class="h4">Título do Artigo</label><br>
-                                    <input type="text" name="title" id="title" class="form-control" placeholder="Insira o nome do Artigo">
+                                    <input type="text" name="title" id="title" class="form-control" placeholder="Insira o nome do Artigo" value="<?php echo $respa['article_name'] ?>">
                                 </div>
                                 <div class="col-4">
                                     <label for="category" class="h4">Categoria do artigo</label>
                                     <select name="category" id="category" class="py-1 form-select">
-                                        <option value="">Selecione a Categoria</option>
+                                        <option value="<?php $respa['category_id'] ?>"><?php echo $respa['category_name'] ?></option>
                                         <?php do { ?>
                                             <option value="<?php echo $respcat['category_id'] ?>"><?php echo $respcat['category_name'] ?></option>
                                         <?php } while ($respcat = mysqli_fetch_assoc($qcat)) ?>
@@ -85,7 +91,7 @@ if (isset($_POST["insert_article"]) && $_POST["insert_article"] === 'insert') {
                                 </div> -->
                                 <div class="col-4">
                                     <label for="author" class="h4">Autor do Artigo</label>
-                                    <input type="text" name="author" id='author' class="form-control">
+                                    <input type="text" name="author" id='author' class="form-control" value="<?php echo $respa['author'] ?>">
                                     </select>
                                 </div>
 
@@ -93,12 +99,13 @@ if (isset($_POST["insert_article"]) && $_POST["insert_article"] === 'insert') {
 
                             <div class="col-12 py-2 px-3 mt-3 ">
                                 <label for="abstract" class="h3">Resumo do Artigo</label>
-                                <textarea name="abstract" id="abstract" class="w-100 form-control abstract" placeholder="Insira o Resumo do Artigo" rows="2" cols="12" maxlength="255"></textarea><span id="count" class="counter"></span>
+                                <textarea name="abstract" id="abstract" class="w-100 form-control abstract" placeholder="Insira o Resumo do Artigo" rows="2" cols="12" maxlength="255"><?php echo $respa['abstract'] ?></textarea><span id="count" class="counter"></span>
                             </div>
-
+                            <!-- howto? -->
                             <div ng-app="textAngularTest" ng-controller="wysiwygeditor" class="container app py-2 mt-3">
                                 <h3>Escreva o Artigo</h3>
                                 <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled='disabled'></div>
+
                                 <textarea name="txtarea" id="txtarea" ng-model="htmlcontent" style="width: 100%" hidden></textarea>
                                 <div ng-bind-html="htmlcontent" hidden></div>
                                 <div ta-bind="text" ng-model="htmlcontent" ta-readonly='disabled' hidden>
@@ -138,9 +145,10 @@ if (isset($_POST["insert_article"]) && $_POST["insert_article"] === 'insert') {
         angular.module("textAngularTest", ['textAngular']);
 
         function wysiwygeditor($scope) {
-            $scope.orightml = '';
+            $scope.orightml = '<?php echo $respa['article_content'] ?>';
             $scope.htmlcontent = $scope.orightml;
             $scope.disabled = false;
+
 
         };
     </script>
