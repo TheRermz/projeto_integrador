@@ -1,3 +1,14 @@
+<?php
+
+require_once('connection/connect.php');
+if (isset($_SESSION["username"]) != '') {
+    $user_id = $_SESSION['userid'];
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
