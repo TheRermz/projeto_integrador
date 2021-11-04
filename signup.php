@@ -9,7 +9,7 @@ if (isset($_POST["insert_user"]) && $_POST["insert_user"] === 'insert') {
     $surname = mysqli_real_escape_string($con, $_POST["surname"]);
     $usrname = mysqli_real_escape_string($con, $_POST["username"]);
     #   if ($_POST["passwd"] === $_POST["repeatpasswd"]) {
-    $md5passwd = md5(mysqli_real_escape_string($con, $_POST["senha"]));
+    $md5passwd = md5(mysqli_real_escape_string($con, $_POST["passwd"]));
     # } #else echo 'A senha ' . $_POST["repeatpasswd"] . ' não corresponde a ' . $_POST["passwd"];
     $password = mysqli_real_escape_string($con, $_POST["passwd"]);
     $email = mysqli_real_escape_string($con, $_POST["email"]);
@@ -22,14 +22,14 @@ if (isset($_POST["insert_user"]) && $_POST["insert_user"] === 'insert') {
 
     #INSERT QUERY
 
-    $sql = "INSERT INTO users (user_id, name, surname, username, md5_passwd, type, ban, status, reg_day, twitchuser, twitteruser, birthdate, country_id,state_id)
-    VALUES (0, '$name', '$surname', '$usrname', '$md5passwd', 'comum', 0, 1, CURRENT_DATE(), '$twitchuser', '$twitteruser', '$birthdate', $country, $state); ";
-    $last_id = $con->insert_id + 1;
-    $sqlpasswd = "INSERT INTO paswd (passwd_id, user_id, passwd) VALUES(0, $last_id, '$password');";
+    $sql = "INSERT INTO users (user_id, user_name, surname, username, md5_passwd, user_type , ban, user_status, reg_day, twitchuser, twitteruser, birthdate, country_id,state_id)
+    VALUES (0, '$name', '$surname', '$usrname', '$md5passwd', 'comum', 0, 1, CURRENT_DATE(), '$twitchuser', '$twitteruser', '$birthdate', $country, $state); "; # INSERT INTO paswd (passwd_id, user_id, passwd) VALUES(0, LAST_INSERT_ID(), '$password'); ";
+    #$last_id = $con->insert_id + 1;
+    $sqlpasswd = "INSERT INTO paswd (passwd_id, user_id, passwd) VALUES(0, LAST_INSERT_ID(), '$password'); ";
     if (mysqli_query($con, $sql) && mysqli_query($con, $sqlpasswd)) {
         header('Location:index.php');
     } else {
-        die("Erro ao cadastrar o Usuário " . $sql . ' e '  . $sqlpasswd .  $name . ' alo ');
+        die("Erro ao cadastrar o Usuário " . $sql . ' alo ');
     }
 } else {
     if (isset($_POST["insert_user"]) && $_POST["insert_user"] !== 'insert') {
@@ -202,7 +202,7 @@ $resps = mysqli_fetch_assoc($qc);
                     </div>
                     <div class="col-md-2">
                         <label for="birthdate" class="form-label"><span data-feather="calendar"></span> Data de Nascimento</label>
-                        <input class="form-control" type="date" name="birthdate" id="birthdate">
+                        <input class="form-control" type="date" name="birthdate" id="birthdate" required>
                         <div class="invalid-feedback">
                             Informe sua data de nascimento.
                         </div>
