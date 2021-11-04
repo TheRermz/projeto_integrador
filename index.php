@@ -1,9 +1,13 @@
 <?php
 require_once('connection/connect.php');
+if (!isset($_SESSION)) {
+    session_start();
+}
 $sqla = "SELECT articles.article_id, articles.article_name, articles.abstract, articles.reg_time, articles.reg_date FROM articles order by article_id DESC LIMIT 10
 ";
 $qa = mysqli_query($con, $sqla);
 $resp = mysqli_fetch_assoc($qa);
+
 
 ?>
 
