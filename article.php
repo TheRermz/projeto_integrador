@@ -48,14 +48,15 @@ if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
 
 
         <div class="album py-5 bg-light">
-            <!-- php loop [do while] to load all articles [still an idea > make a featured article] -->
 
-            <div class="container">
+
+            <div class="container form-control">
                 <p class="h1 pb-2"><?php echo $respc['article_name'] ?></p>
                 <p class="h5 pb-2">Artigo adicionado no dia <?php $dpost = $respc['reg_date'];
                                                             $dpostDMY = strtotime($dpost);
                                                             $newdpost = date('d/m/Y', $dpostDMY);
                                                             echo $newdpost ?> às <?php echo $respc['reg_time'] ?></p>
+                <hr class="my-4">
                 <div class="row row-cols-12 row-cols-sm-2 row-cols-md-3 g-3 py-2 m-1">
                     <div class="d-block w-100">
                         <?php echo $respc['article_content'] ?>
