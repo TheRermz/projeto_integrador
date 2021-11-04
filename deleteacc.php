@@ -20,7 +20,7 @@ if (isset($_POST["delete"]) && $_POST["delete"] === 'gotoindex') {
 
 if (isset($_GET["user_id"]) && $_GET["user_id"] !== '') {
     $user_id = $_GET["user_id"];
-    $sqlu = "SELECT user_id, name, surname, username FROM users WHERE user_id = $user_id";
+    $sqlu = "SELECT user_id, user_name, surname, username FROM users WHERE user_id = $user_id";
     $qu = mysqli_query($con, $sqlu);
     $resp = mysqli_fetch_assoc($qu);
 }
@@ -70,7 +70,7 @@ if (isset($_GET["user_id"]) && $_GET["user_id"] !== '') {
 
                         <div class="col-sm-6">
                             <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="" value="<?php echo $resp['name'] ?>" readonly>
+                            <input type="text" class="form-control" id="nome" placeholder="" value="<?php echo $resp['user_name'] ?>" readonly>
 
                         </div>
 
