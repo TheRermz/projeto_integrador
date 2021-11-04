@@ -45,39 +45,41 @@ require_once('../connection/connect.php');
         <a class="nav-link btn btn-secondary text-white mb-2" href="admin.php">Administrativo</a>
     </nav>
 
-    <main>
+    <main class="col-12 ms-sm-auto">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Administração</h1>
+        </div>
+
+        <h2>Section title</h2>
 
 
 
-        <div class="album py-5 bg-light">
-            <!-- php loop [do while] to load all articles [still an idea > make a featured article] -->
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div class="col">
-                        <p class="h1">Artigos recentes</p>
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                            </svg>
 
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Veja mais!</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> <!-- acesso apenas por editor/admin -->
-                                    </div>
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Header</th>
+                        <th scope="col">Header</th>
+                        <th scope="col">Header</th>
+                        <th scope="col">Header</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1,001</td>
+                        <td>random</td>
+                        <td>data</td>
+                        <td>placeholder</td>
+                        <td>text</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </main>
+    </div>
+    </div>
 
     <footer class="my-5 pt-5 text-muted text-center text-small">
         <div class="container">
