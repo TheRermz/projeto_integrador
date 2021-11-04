@@ -1,9 +1,20 @@
 <?php
 
 require_once('connection/connect.php');
-if (isset($_SESSION["username"]) != '') {
-    $user_id = $_SESSION['userid'];
+if (!isset($_SESSION)) {
+    session_start();
 }
+if (isset($_SESSION["user_id"]) != '') {
+    $user_id = $_SESSION['user_id'];
+
+    $sql = "SELECT * FROM users JOIN country ON users.country_id = country.country_id JOIN br_states ON users.state_id = br_states.state_id WHERE user_id = $user_id";
+    $q = mysqli_query($con, $sql);
+    $resp = mysqli_fetch_assoc($q);
+    #echo $_SESSION["user_id"];
+} else {
+    echo $_SESSION["user_id"] . ' conexao nao foi feita';
+}
+
 
 
 ?>
@@ -48,15 +59,16 @@ if (isset($_SESSION["username"]) != '') {
         <p class="h2">Área do Usuário</p>
         <p>Olá Usuário!</p>
         <div class="row g-3">
+
             <div class="col-sm-6">
                 <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" placeholder="" value="" readonly>
+                <input type="text" class="form-control" id="nome" placeholder="" value="<?php echo $resp['user_name'] ?>" readonly>
 
             </div>
 
             <div class="col-sm-6">
                 <label for="sobrenome" class="form-label">Sobrenome</label>
-                <input type="text" class="form-control" id="sobrenome" placeholder="" value="" readonly>
+                <input type="text" class="form-control" id="sobrenome" placeholder="" value="<?php echo $resp['surname'] ?>" readonly>
 
             </div>
 
@@ -64,28 +76,28 @@ if (isset($_SESSION["username"]) != '') {
                 <label for="username" class="form-label">Username</label>
                 <div class="input-group has-validation">
                     <span class="input-group-text">@</span>
-                    <input type="text" class="form-control" id="username" placeholder="Username" readonly>
+                    <input type="text" class="form-control" id="username" placeholder="Username" readonly value="<?php echo $resp['username'] ?>">
                 </div>
             </div>
 
 
             <div class="col-12">
                 <label for="email" class="form-label">Email <span class="text-muted">(Opcional)</span></label>
-                <input type="email" class="form-control" id="email" placeholder="seu@email.com" readonly>
+                <input type="email" class="form-control" id="email" value="<?php echo $resp['email'] ?>" placeholder="seu@email.com" readonly>
             </div>
 
 
             <div class="col-6">
                 <label for="country" class="form-label">País</label>
                 <select class="form-select" id="country" disabled>
-                    <option value="select" selected="selected">Selecione um país...</option>
+                    <option value="<?php echo $resp['country_id'] ?>" selected="selected"><?php echo $resp['country_name_pt'] ?> </option>
                 </select>
             </div>
 
             <div class="col-6">
                 <label for="state" class="form-label">Estado</label>
                 <select class="form-select" id="state" disabled>
-                    <option value="">Selecione seu estado...</option>
+                    <option value="<?php echo $resp['state_id'] ?>"><?php echo $resp['state_abbr'] ?></option>
 
                 </select>
             </div>
@@ -93,16 +105,16 @@ if (isset($_SESSION["username"]) != '') {
             <p class="h4">Informações adicionais</p>
             <div class="col-5">
                 <label for="twitchuser" class="form-label"><span data-feather="twitch"></span> Username na twitch</label>
-                <input type="text" class="form-control" id="twitchuser" placeholder="Seu username na twitch" readonly>
+                <input type="text" class="form-control" id="twitchuser" placeholder="Seu username na twitch" value="<?php echo $resp['twitchuser'] ?>" readonly>
 
             </div>
             <div class="col-5">
                 <label for="twitteruser" class="form-label"><span data-feather="twitter"></span> Username no twitter Twitter</label>
-                <input type="text" class="form-control" id="twitteruser" placeholder="informe seu twitter" readonly>
+                <input type="text" class="form-control" id="twitteruser" placeholder="informe seu twitter" value="<?php echo $resp['twitteruser'] ?>" readonly>
             </div>
             <div class="col-2">
                 <label for="birthdate" class="form-label"><span data-feather="calendar"></span> Data de Nascimento</label>
-                <input class="form-control" type="date" name="birthdate" id="birthdate" readonly>
+                <input class="form-control" type="date" name="birthdate" id="birthdate" value="<?php echo $resp['birthdate'] ?>" readonly>
 
             </div>
 
