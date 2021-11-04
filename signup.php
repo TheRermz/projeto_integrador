@@ -22,8 +22,8 @@ if (isset($_POST["insert_user"]) && $_POST["insert_user"] === 'insert') {
 
     #INSERT QUERY
 
-    $sql = "INSERT INTO users (user_id, user_name, surname, username, md5_passwd, user_type , ban, user_status, reg_day, twitchuser, twitteruser, birthdate, country_id,state_id)
-    VALUES (0, '$name', '$surname', '$usrname', '$md5passwd', 'comum', 0, 1, CURRENT_DATE(), '$twitchuser', '$twitteruser', '$birthdate', $country, $state); "; # INSERT INTO paswd (passwd_id, user_id, passwd) VALUES(0, LAST_INSERT_ID(), '$password'); ";
+    $sql = "INSERT INTO users (user_id, user_name, surname, username, md5_passwd, user_type, email, ban, user_status, reg_day, twitchuser, twitteruser, birthdate, country_id,state_id)
+    VALUES (0, '$name', '$surname', '$usrname', '$md5passwd', 'comum', '$email', 0, 1, CURRENT_DATE(), '$twitchuser', '$twitteruser', '$birthdate', $country, $state); "; # INSERT INTO paswd (passwd_id, user_id, passwd) VALUES(0, LAST_INSERT_ID(), '$password'); ";
     #$last_id = $con->insert_id + 1;
     $sqlpasswd = "INSERT INTO paswd (passwd_id, user_id, passwd) VALUES(0, LAST_INSERT_ID(), '$password'); ";
     if (mysqli_query($con, $sql) && mysqli_query($con, $sqlpasswd)) {
