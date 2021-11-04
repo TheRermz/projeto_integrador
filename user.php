@@ -11,8 +11,6 @@ if (isset($_SESSION["user_id"]) != '') {
     $q = mysqli_query($con, $sql);
     $resp = mysqli_fetch_assoc($q);
     #echo $_SESSION["user_id"];
-} else {
-    echo $_SESSION["user_id"] . ' conexao nao foi feita';
 }
 
 
