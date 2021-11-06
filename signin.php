@@ -3,7 +3,7 @@ require_once('connection/connect.php');
 if (!isset($_SESSION)) {
     session_start();
 }
-
+echo $_SESSION["type"]
 ?>
 
 
@@ -92,6 +92,14 @@ if (!isset($_SESSION)) {
                     echo $_SESSION['loginerror'];
                     echo '</div>';
                     unset($_SESSION['loginerror']);
+                }
+
+                if (isset($_SESSION['naoautorizado'])) {
+                    echo '<div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">';
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                    echo $_SESSION['naoautorizado'];
+                    echo '</div>';
+                    unset($_SESSION['naoautorizado']);
                 }
 
 
