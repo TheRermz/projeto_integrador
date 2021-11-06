@@ -1,12 +1,30 @@
 <?php
 require_once('../connection/connect.php');
-// if ($con !== mysqli_connect_error()) {
-//     echo 'foi' . mysqli_connect_error($con);
+if (isset($_SESSION)) {
+    session_start();
+}
+
+// if ($_SESSION["type"] === 'administrador') {
+//     echo 'Bem vindo!';
 // } else {
-//     echo 'num foi' . mysqli_connect_error($con);
+//     header('location:../signin.php');
+//     $_SESSION["naoautorizado"] = 'Você não tem autorização para acessar essa área';
 // }
 
+$sqlusr = "SELECT * FROM users";
+$qusr = mysqli_query($con, $sqlusr);
+$respusr = mysqli_fetch_assoc($qusr);
+
+
+$sqlart = "SELECT * FROM articles";
+$qart = mysqli_query($con, $sqlart);
+$respart = mysqli_fetch_assoc($qart);
+
+
+
 ?>
+
+
 
 
 
@@ -50,30 +68,73 @@ require_once('../connection/connect.php');
             <h1 class="h2">Administração</h1>
         </div>
 
-        <h2>Section title</h2>
 
+        <h2>Controle de Artigos</h2>
 
-
-
-        <div class="table-responsive">
+        <div class="table-responsive mx-5 w-auto">
             <table class="table table-striped table-sm">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Header</th>
-                        <th scope="col">Header</th>
-                        <th scope="col">Header</th>
-                        <th scope="col">Header</th>
+                        <th scope="col">Nome do Artigo</th>
+                        <th scope="col">Publicação</th>
+
+                        <th colspan="2" scope="col">Controle de Artigo</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php do { ?>
+                        <tr>
+                            <td><?php echo $respart['article_id'] ?></td>
+                            <td><?php echo $respart['article_name'] ?></td>
+                            <td><?php $newdate = $respart['reg_date'];
+                                $tostr = strtotime($newdate);
+                                $newdateDMY = date('d/m/Y', $tostr);
+                                echo $newdateDMY ?></td>
+                            <td><a href="editarticle.php?article_id=<?php echo $respart['article_id'] ?>">Editar Artigo</a></td>
+                            <td><a href="deletearticle.php?article_id=<?php echo $respart['article_id'] ?>">Excluir Artigo</a></td>
+                        </tr>
+                    <?php } while ($respart = mysqli_fetch_assoc($qart)) ?>
+                </tbody>
+            </table>
+        </div>
+
+        <hr class="my-4">
+
+        <h2 class="mx-5">Controle de Usuários</h2>
+
+        <div class="table-responsive mx-5 w-auto">
+            <table class="table table-striped table-sm">
+                <thead>
                     <tr>
-                        <td>1,001</td>
-                        <td>random</td>
-                        <td>data</td>
-                        <td>placeholder</td>
-                        <td>text</td>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Tipo de usuário</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Status de Ban</th>
+                        <th colspan="2" scope="col">Controle de Usuário</th>
                     </tr>
+                </thead>
+                <tbody>
+                    <?php do { ?><tr>
+
+                            <td><?php echo $respusr['user_id'] ?></td>
+                            <td><?php echo $respusr['username'] ?></td>
+                            <td><?php echo $respusr['user_type'] ?></td>
+                            <td><?php if ($respusr['user_status'] == 1) {
+                                    echo 'Ativo';
+                                } else {
+                                    echo 'Inativo';
+                                } ?></td>
+                            <td><?php if ($respusr['ban'] == 1) {
+                                    echo 'Banido';
+                                } else {
+                                    echo 'Não banido';
+                                } ?></td>
+                            <td><a href="../user_edit.php?user_id=<?php echo $respusr['user_id'] ?>">Editar Usuário</a></td>
+                            <td><a href="../deleteacc.php?user_id=<?php echo $respusr['user_id'] ?>">Excluir Usuário</a></td>
+
+                        </tr><?php } while ($respusr = mysqli_fetch_assoc($qusr)) ?>
                 </tbody>
             </table>
         </div>
@@ -81,7 +142,7 @@ require_once('../connection/connect.php');
     </div>
     </div>
 
-    <footer class="my-5 pt-5 text-muted text-center text-small">
+    <footer class=" my-5 pt-5 text-muted text-center text-small">
         <div class="container">
             <p class="float-end mb-1">
                 <button onclick="gotoTop()" id="t" class="text-primary" title="volta ao topo da página">Voltar ao Topo da página</button>
