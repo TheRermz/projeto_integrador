@@ -55,21 +55,21 @@ $respart = mysqli_fetch_assoc($qart);
     include('../include/navadmin.php');
     ?>
 
-    <nav class="nav flex-column w-25 float-start py-5 align-content-center">
+    <!-- <nav class="nav flex-column w-25 float-start py-5 align-content-center">
         <a class="nav-link btn btn-secondary text-white mb-2 active" aria-current="page" href="../user.php?">Usuário</a>
         <a class="nav-link btn btn-secondary text-white mb-2" href="../user_edit.php?">Alterar dados</a>
         <a class="nav-link btn btn-secondary text-white mb-2" href="../deleteacc.php?user_id=">Cancelar conta</a>
         <a class="nav-link btn btn-secondary text-white mb-2" href="addarticle.php">Adicionar Artigo</a>
         <a class="nav-link btn btn-secondary text-white mb-2" href="admin.php">Administrativo</a>
-    </nav>
+    </nav> -->
 
     <main class="col-12 ms-sm-auto">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Administração</h1>
+            <h1 class="h2 mx-5">Administração</h1>
         </div>
 
 
-        <h2>Controle de Artigos</h2>
+        <h2 class="mx-5">Controle de Artigos</h2>
 
         <div class="table-responsive mx-5 w-auto">
             <table class="table table-striped table-sm">

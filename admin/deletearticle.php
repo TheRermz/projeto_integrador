@@ -1,9 +1,6 @@
 <?php
 require_once('../connection/connect.php');
-$sqla = "SELECT articles.article_id, articles.article_name, articles.abstract, articles.reg_time, articles.reg_date FROM articles order by article_id DESC LIMIT 10
-";
-$qa = mysqli_query($con, $sqla);
-$resp = mysqli_fetch_assoc($qa);
+
 if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
     $id = $_GET["article_id"];
 
@@ -12,7 +9,20 @@ if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
     $respc = mysqli_fetch_assoc($qc);
 }
 
+if (isset($_POST['delete']) && $_POST['delete'] === 'deleteart') {
+    $id = $_POST["articleid"];
+    $sql = "DELETE FROM articles WHERE article_id = $id";
+    if (mysqli_query($con, $sql)) {
 
+        header('Location:../index.php');
+    } else {
+        die("Erro  ao deletar o artigo $id: " . $sql . "<br>" . mysqli_error($con));
+    }
+}
+
+if (isset($_POST["delete"]) && $_POST["delete"] === 'gotoindex') {
+    header('Location:index.php');
+}
 ?>
 
 
@@ -47,25 +57,35 @@ if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
     <main>
 
 
+        <form action="" method="post">
+            <div class="album py-5 bg-light">
+                <div class="container form-control mb-2">
+                    <p class="h3">Olá! Você deseja mesmo <strong>DELETAR</strong> o artigo <?php echo $respc['article_name'] ?>? Se a resposta for Sim, clique no botão "Deletar Artigo", feito isso, todo conteúdo do artigo será apagado de nosso banco de dados.</p>
+                </div>
+                <div class="container form-control">
 
-        <div class="album py-5 bg-light">
-
-
-            <div class="container form-control">
-                <p class="h1 pb-2"><?php echo $respc['article_name'] ?></p>
-                <p class="h5 pb-2">Artigo adicionado no dia <?php $dpost = $respc['reg_date'];
-                                                            $dpostDMY = strtotime($dpost);
-                                                            $newdpost = date('d/m/Y', $dpostDMY);
-                                                            echo $newdpost ?> às <?php echo $respc['reg_time'] ?></p>
-                <hr class="my-4">
-                <div class="row row-cols-12 row-cols-sm-2 row-cols-md-3 g-3 py-2 m-1">
-                    <div class="d-block w-100">
-                        <?php echo $respc['article_content'] ?>
+                    <p class="h1 pb-2"><?php echo $respc['article_name'] ?></p>
+                    <p class="h5 pb-2">Artigo adicionado no dia <?php $dpost = $respc['reg_date'];
+                                                                $dpostDMY = strtotime($dpost);
+                                                                $newdpost = date('d/m/Y', $dpostDMY);
+                                                                echo $newdpost ?> às <?php echo $respc['reg_time'] ?></p>
+                    <hr class="my-4">
+                    <div class="row row-cols-12 row-cols-sm-2 row-cols-md-3 g-3 py-2 m-1">
+                        <div class="d-block w-100">
+                            <?php echo $respc['article_content'] ?>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
+            <hr class="my-4">
+            <div class="d-flex justify-content-center px-5">
+                <input type="hidden" name="articleid" value="<?php echo $respc['article_id'] ?>">
+                <button class="w-25 btn btn-primary btn-lg m-2 " type="submit" value="gotoindex" name="delete">Voltar à página principal</button>
+                <button class="w-25 btn btn-danger btn-lg m-2" type="submit" value="deleteart" name="delete">Deletar Artigo</button>
+
+            </div>
+        </form>
     </main>
 
     <footer class="my-5 pt-5 text-muted text-center text-small">
