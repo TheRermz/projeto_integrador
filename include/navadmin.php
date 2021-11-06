@@ -34,9 +34,9 @@ $activepage = basename($_SERVER["PHP_SELF"], ".php")
         <!-- <li class="nav-item">
             <a class="nav-link disabled">Disabled</a>
         </li> -->
-        <form class="d-flex mb-1 search">
+        <!-- <form class="d-flex mb-1 search">
             <input class="form-control me-2 ms-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-primary " type="submit">Search</button>
-        </form>
+        </form> -->
     </ul>
 </nav>
