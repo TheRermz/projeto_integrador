@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
 $activepage = basename($_SERVER["PHP_SELF"], ".php")
 ?>
 
@@ -11,10 +14,12 @@ $activepage = basename($_SERVER["PHP_SELF"], ".php")
             <a class="nav-link <?php if ($activepage === 'about') echo 'active bg-secondary', '' ?> text-white" aria-current="page" href="../projeto_integrador/about.php">Sobre</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php if ($activepage === 'recommendations') echo 'active bg-secondary', '' ?> text-white" aria-current="page" href="../projeto_integrador/recommendations.php">Recomendações</a>
+            <a class="nav-link <?php if ($activepage === 'recommendations') echo 'active bg-secondary', '' ?> text-white disabled" aria-disabled="true" tabindex="-1" aria-current="page" href="../projeto_integrador/recommendations.php">Recomendações</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php if ($activepage === 'user') echo 'active bg-secondary', '' ?> text-white" aria-current="page" href="../projeto_integrador/user.php">Página do Usuário</a>
+            <?php if (isset($_SESSION["user"])) { ?>
+                <a class="nav-link <?php if ($activepage === 'user') echo 'active bg-secondary', '' ?> text-white" aria-current="page" href="../projeto_integrador/user.php">Página do Usuário</a>
+            <?php } ?>
         </li>
         <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
