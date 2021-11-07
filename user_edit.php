@@ -120,7 +120,7 @@ if (isset($_GET["user_id"]) != '') {
                 <div class="col-5">
                     <label for="passwd" class="form-label">Senha atual</label>
                     <div class="input-group has-validation">
-                        <input type="password" class="form-control" id="passwd" placeholder="Senha" name="passwd">
+                        <input type="password" class="form-control" id="passwd" placeholder="Senha" name="passwd" disabled>
                         <div class="invalid-feedback">
                             Favor insira a sua senha.
                         </div>
