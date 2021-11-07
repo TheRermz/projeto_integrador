@@ -62,7 +62,17 @@ $respart = mysqli_fetch_assoc($qart);
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2 mx-5">Administração</h1>
         </div>
-
+        <div class="container">
+            <?php
+            if (isset($_SESSION['admincantchange'])) {
+                echo '<div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">';
+                echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                echo $_SESSION['admincantchange'];
+                echo '</div>';
+                unset($_SESSION['admincantchange']);
+            }
+            ?>
+        </div>
 
         <h2 class="mx-5">Controle de Artigos</h2>
 
