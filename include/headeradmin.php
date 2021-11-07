@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="navbar navbar-dark bg-dark shadow-sm m-0">
+    <div class="navbar navbar-dark bg-dark m-0">
         <div class=" container">
             <a href="../" class="navbar-brand d-flex align-items-center">
                 <img src="../assets/img/Therermz_joia.png" alt="hellmas fazendo joinha" width="50" height="50">

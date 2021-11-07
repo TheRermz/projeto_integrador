@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="navbar navbar-dark bg-dark">
         <div class="container">
 
 

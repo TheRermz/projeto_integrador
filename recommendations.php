@@ -36,7 +36,7 @@ require_once('connection/connect.php');
     include('include/header.php');
     include('include/nav.php');
     ?>
-    <div class="topo"></div>
+
     <main>
 
 
