@@ -47,10 +47,12 @@ if (isset($_SESSION["user_id"]) != '') {
         <a class="nav-link btn btn-secondary text-white mb-2 active" aria-current="page" href="user.php?">Usuário</a>
         <a class="nav-link btn btn-secondary text-white mb-2" href="user_edit.php?user_id=<?php echo $resp['user_id'] ?>">Alterar dados</a>
         <a class="nav-link btn btn-secondary text-white mb-2" href="deleteacc.php?user_id=<?php echo $resp['user_id'] ?>">Cancelar conta</a>
-        <!-- if user !== comum -->
-        <a class="nav-link btn btn-secondary text-white mb-2" href="admin/addarticle.php">Adicionar Artigo</a>
-        <!-- if user === administrativo -->
-        <a class="nav-link btn btn-secondary text-white mb-2" href="admin/admin.php">Administrativo</a>
+        <?php if ($_SESSION["type"] == 'editor') { ?>
+            <a class="nav-link btn btn-secondary text-white mb-2" href="admin/addarticle.php">Adicionar Artigo</a>
+        <?php } ?>
+        <?php if ($_SESSION['type'] == 'administrador') { ?>
+            <a class="nav-link btn btn-secondary text-white mb-2" href="admin/admin.php">Administrativo</a>
+        <?php } ?>
     </nav>
 
     <div class="col-12 container py-5">
