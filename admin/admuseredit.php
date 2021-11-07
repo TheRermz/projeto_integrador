@@ -19,7 +19,10 @@ if (isset($_GET["user_id"]) != '') {
     $resp = mysqli_fetch_assoc($q);
     $passwd = $resp['passwd'];
 
-
+    if ($_GET["user_id"] == $_SESSION["user_id"]) {
+        $_SESSION["admincantchange"] = 'Você não pode alterar suas próprias informações a partir do painel de admin';
+        header('location:admin.php');
+    }
 
     if (isset($_POST["update"])) {
         $id = $resp['user_id'];
@@ -33,18 +36,23 @@ if (isset($_GET["user_id"]) != '') {
         $twitch = mysqli_real_escape_string($con, $_POST["twitchuser"]);
         $twitter = mysqli_real_escape_string($con, $_POST["twitteruser"]);
         $birthdate = $_POST["birthdate"];
+        $user_type = $_POST["type"];
+        $user_status = $_POST["status"];
+        $user_ban = $_POST["ban"];
 
-        $sqlupdate = "UPDATE users SET user_name = '$name', surname = '$surname', md5_passwd = '$novasenhamd5', email = '$email', twitchuser = '$twitch', twitteruser = '$twitter', country_id = $country, state_id = $state, birthdate = '$birthdate' WHERE user_id = $id ";
-        $sqlpasswdupdate = "UPDATE paswd SET passwd = '$novasenha' WHERE user_id = $id";
-        if (mysqli_query($con, $sqlupdate) && mysqli_query($con, $sqlpasswdupdate)) {
-            header('Location:user.php');
+        $sqlupdate = "UPDATE users SET user_name = '$name', surname = '$surname', md5_passwd = '$novasenhamd5', email = '$email', twitchuser = '$twitch', twitteruser = '$twitter', country_id = $country, state_id = $state, birthdate = '$birthdate', user_type = '$user_type', user_status = $user_status, ban = $user_ban  WHERE user_id = $id ";
+        #echo $sqlupdate;
+        if (mysqli_query($con, $sqlupdate)) {
+            header('Location:admin.php');
             echo 'Usuário atualizado com sucesso';
         } else {
-            header('location:index.php');
+            header('location:admin.php');
             echo 'erro';
         }
     }
 }
+
+
 
 
 
@@ -92,12 +100,12 @@ if (isset($_GET["user_id"]) != '') {
         <p>Olá Usuário!</p>
         <form class="needs-validation" novalidate method="post">
             <div class="row g-3">
-                <div class="col-sm-6">
+                <div class="col-6">
                     <label for="nome" class="form-label">Nome</label>
                     <input type="text" class="form-control" id="nome" placeholder="" name="user_name" value="<?php echo $resp['user_name'] ?>">
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-6">
                     <label for="sobrenome" class="form-label">Sobrenome</label>
                     <input type="text" class="form-control" id="sobrenome" placeholder="" name="surname" value="<?php echo $resp['surname'] ?>">
 
@@ -117,83 +125,79 @@ if (isset($_GET["user_id"]) != '') {
                     <input type="email" class="form-control" name="email" id="email" placeholder="seu@email.com" value="<?php echo $resp['email'] ?>">
                 </div>
 
-                <div class="col-5">
-                    <label for="passwd" class="form-label">Senha atual</label>
-                    <div class="input-group has-validation">
-                        <input type="password" class="form-control" id="passwd" placeholder="Senha" name="passwd" disabled>
-                        <div class="invalid-feedback">
-                            Favor insira a sua senha.
-                        </div>
-                    </div>
-                </div>
-                <div class="col-5">
-                    <label for="newpasswd" class="form-label">Nova Senha</label>
-                    <div class="input-group has-validation">
-                        <input name="newpasswd" type="password" class="form-control" id="newpasswd" placeholder="Nova Senha">
+                <div class="col-4 form-control mx-2">
+                    <label for="type">
+                        <p class="h3">Altere o tipo de usuário: </p>
+                    </label> <br>
+                    <input type="radio" name="type" id="type" value="administrador" <?php if ($resp["user_type"] == 'administrador') echo 'checked'; ?>> Administrador
+                    <input type="radio" name="type" id="type" value="editor" <?php if ($resp["user_type"] == 'editor') echo 'checked'; ?>> Editor
+                    <input type="radio" name="type" id="type" value="comum" <?php if ($resp["user_type"] == 'comum') echo 'checked'; ?>> Comum
 
-                        <div class="invalid-feedback">
-                            Favor repetir a senha.
-                        </div>
-                    </div>
                 </div>
 
-                <div class="col-2">
-                    <label>&nbsp;</label>
-                    <div class="checkbox">
-                        <label class="chbox mt-3">
-                            <input type="checkbox" class="btn btn-group" onclick="showPasswd()"><span data-feather="eye-off" id="passwdIcon" "></span> Mostrar Senha</button>
+                <div class="col-4 form-control mx-2">
+                    <label for="status">
+                        <p class="h3">Status do usuário: </p>
+                    </label> <br>
+                    <input type="radio" name="status" id="status" value="1" <?php if ($resp["user_status"] == 1) echo 'checked'; ?>> Ativo
+                    <input type="radio" name="status" id="status" value="0" <?php if ($resp["user_status"] == 0) echo 'checked'; ?>> Inativo
+                </div>
 
-                        </label>
-                    </div>
+                <div class="col-4 form-control mx-2">
+                    <label for="ban">
+                        <p class="h3">Status de ban: </p>
+                    </label> <br>
+                    <input type="radio" name="ban" id="ban" value="1" <?php if ($resp["ban"] == 1) echo 'checked'; ?>> Banido
+                    <input type="radio" name="ban" id="ban" value="0" <?php if ($resp["ban"] == 0) echo 'checked'; ?>> Desbanido
                 </div>
 
 
                 <div class=" col-6">
-                                <label for="country" class="form-label">País</label>
-                                <select name="country" class="form-select" id="country">
-                                    <?php do { ?>
+                    <label for="country" class="form-label">País</label>
+                    <select name="country" class="form-select" id="country">
+                        <?php do { ?>
 
-                                        <option value="<?php echo $respc['country_id']; ?>" <?php if ($respc['country_id'] === $resp['country_id']) {
-                                                                                                echo "selected";
-                                                                                            } ?>><?php echo $respc['country_name_pt']; ?></option>
+                            <option value="<?php echo $respc['country_id']; ?>" <?php if ($respc['country_id'] === $resp['country_id']) {
+                                                                                    echo "selected";
+                                                                                } ?>><?php echo $respc['country_name_pt']; ?></option>
 
-                                    <?php } while ($respc = mysqli_fetch_assoc($qc)); ?>
-                                </select>
-                    </div>
+                        <?php } while ($respc = mysqli_fetch_assoc($qc)); ?>
+                    </select>
+                </div>
 
-                    <div class="col-6">
-                        <label for="state" class="form-label">Estado</label>
-                        <select name="state" class="form-select" id="state">
-                            <?php do { ?>
-                                <option value="<?php echo $resps['state_id'] ?>" <?php if ($resps['state_id'] === $resp['state_id']) {
-                                                                                        echo "selected";
-                                                                                    } ?>><?php echo $resps['state_abbr'] ?></option>
-                            <?php } while ($resps = mysqli_fetch_assoc($qs)); ?>
-                        </select>
-                    </div>
+                <div class="col-6">
+                    <label for="state" class="form-label">Estado</label>
+                    <select name="state" class="form-select" id="state">
+                        <?php do { ?>
+                            <option value="<?php echo $resps['state_id'] ?>" <?php if ($resps['state_id'] === $resp['state_id']) {
+                                                                                    echo "selected";
+                                                                                } ?>><?php echo $resps['state_abbr'] ?></option>
+                        <?php } while ($resps = mysqli_fetch_assoc($qs)); ?>
+                    </select>
+                </div>
 
-                    <p class="h4">Informações adicionais</p>
-                    <div class="col-5">
-                        <label for="twitchuser" class="form-label"><span data-feather="twitch"></span> Username na twitch</label>
-                        <input type="text" class="form-control" id="twitchuser" name="twitchuser" placeholder="Seu username na twitch" value="<?php echo $resp['twitchuser'] ?>">
-
-                    </div>
-                    <div class="col-5">
-                        <label for="twitteruser" class="form-label"><span data-feather="twitter"></span> Username no twitter Twitter</label>
-                        <input type="text" class="form-control" id="twitteruser" name="twitteruser" placeholder="informe seu twitter" value="<?php echo $resp['twitteruser'] ?>">
-                    </div>
-                    <div class="col-2">
-                        <label for="birthdate" class="form-label"><span data-feather="calendar"></span> Data de Nascimento</label>
-                        <input class="form-control" type="date" name="birthdate" id="birthdate" value="<?php echo $resp['birthdate'] ?>">
-
-                    </div>
-                    <hr class="my-4">
-                    <div class="d-flex justify-content-center">
-                        <input type="hidden" name="update" value="update">
-                        <button type="submit" class="w-50 btn btn-primary btn-lg">Atualizar Cadastro</button>
-                    </div>
+                <p class="h4">Informações adicionais</p>
+                <div class="col-5">
+                    <label for="twitchuser" class="form-label"><span data-feather="twitch"></span> Username na twitch</label>
+                    <input type="text" class="form-control" id="twitchuser" name="twitchuser" placeholder="Seu username na twitch" value="<?php echo $resp['twitchuser'] ?>">
 
                 </div>
+                <div class="col-5">
+                    <label for="twitteruser" class="form-label"><span data-feather="twitter"></span> Username no twitter Twitter</label>
+                    <input type="text" class="form-control" id="twitteruser" name="twitteruser" placeholder="informe seu twitter" value="<?php echo $resp['twitteruser'] ?>">
+                </div>
+                <div class="col-2">
+                    <label for="birthdate" class="form-label"><span data-feather="calendar"></span> Data de Nascimento</label>
+                    <input class="form-control" type="date" name="birthdate" id="birthdate" value="<?php echo $resp['birthdate'] ?>">
+
+                </div>
+                <hr class="my-4">
+                <div class="d-flex justify-content-center">
+                    <input type="hidden" name="update" value="update">
+                    <button type="submit" class="w-50 btn btn-primary btn-lg">Atualizar Cadastro</button>
+                </div>
+
+            </div>
         </form>
 
         <footer class="my-5 pt-5 text-muted text-center text-small">
