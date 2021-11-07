@@ -77,8 +77,7 @@ echo $_SESSION["type"]
                     unset($_SESSION['register']);
                 }
 
-                if (isset($_SESSION['ban'])) {
-
+                if (isset($_SESSION['banned'])) {
                     echo '<div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">';
                     echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
                     echo $_SESSION['banned'];
@@ -108,6 +107,14 @@ echo $_SESSION["type"]
                     echo $_SESSION['notlogged'];
                     echo '</div>';
                     unset($_SESSION['notlogged']);
+                }
+
+                if (isset($_SESSION['logoff'])) {
+                    echo '<div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">';
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                    echo $_SESSION['logoff'];
+                    echo '</div>';
+                    unset($_SESSION['logoff']);
                 }
 
 
