@@ -126,7 +126,7 @@ $respart = mysqli_fetch_assoc($qart);
                                 } else {
                                     echo 'Não banido';
                                 } ?></td>
-                            <td><a href="../user_edit.php?user_id=<?php echo $respusr['user_id'] ?>">Editar Usuário</a></td>
+                            <td><a href="admuseredit.php?user_id=<?php echo $respusr['user_id'] ?>">Editar Usuário</a></td>
                             <td><a href="../deleteacc.php?user_id=<?php echo $respusr['user_id'] ?>">Excluir Usuário</a></td>
 
                         </tr><?php } while ($respusr = mysqli_fetch_assoc($qusr)) ?>
