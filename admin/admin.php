@@ -3,13 +3,8 @@ require_once('../connection/connect.php');
 if (isset($_SESSION)) {
     session_start();
 }
+include('administrator.php');
 
-// if ($_SESSION["type"] === 'administrador') {
-//     echo 'Bem vindo!';
-// } else {
-//     header('location:../signin.php');
-//     $_SESSION["naoautorizado"] = 'Você não tem autorização para acessar essa área';
-// }
 
 $sqlusr = "SELECT * FROM users";
 $qusr = mysqli_query($con, $sqlusr);
