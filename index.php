@@ -93,7 +93,7 @@ $respage = mysqli_fetch_assoc($qpage);
 
                                                 <!-- if user !== comum  -->
                                                 <?php if ($_SESSION['type'] != '' && $_SESSION['type'] != 'comum') { ?>
-                                                    <a class="indexlink mx-1" href="admin/addarticle.php?article_id=<?php echo $respage['article_id'] ?> "><button type="button" class="btn btn-sm btn-outline-secondary">Editar</button></a>
+                                                    <a class="indexlink mx-1" href="admin/editarticle.php?article_id=<?php echo $respage['article_id'] ?> "><button type="button" class="btn btn-sm btn-outline-secondary">Editar</button></a>
                                                 <?php } ?>
                                                 <!-- acesso apenas por editor/admin -->
                                             </div>
