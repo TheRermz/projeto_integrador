@@ -92,7 +92,10 @@ $respage = mysqli_fetch_assoc($qpage);
                                                 <a class="indexlink" href="article.php?article_id=<?php echo $respage['article_id'] ?> "><button type="button" class="btn btn-sm btn-outline-secondary">Veja Mais</button></a>
 
                                                 <!-- if user !== comum  -->
-                                                <a class="indexlink mx-1" href="admin/addarticle.php?article_id=<?php echo $respage['article_id'] ?> "><button type="button" class="btn btn-sm btn-outline-secondary">Editar</button></a> <!-- acesso apenas por editor/admin -->
+                                                <?php if ($_SESSION['type'] != '' && $_SESSION['type'] != 'comum') { ?>
+                                                    <a class="indexlink mx-1" href="admin/addarticle.php?article_id=<?php echo $respage['article_id'] ?> "><button type="button" class="btn btn-sm btn-outline-secondary">Editar</button></a>
+                                                <?php } ?>
+                                                <!-- acesso apenas por editor/admin -->
                                             </div>
                                             <small class="text-muted"><?php echo 'Artigo publicado às ' . $respage['reg_time'] ?></small>
                                         </div>
