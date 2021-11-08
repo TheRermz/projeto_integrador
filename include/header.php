@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+?>
 <header>
     <div class="collapse bg-dark" id="navbarHeader">
         <div class="container">
@@ -12,9 +18,9 @@
                         <li><a href="https://twitter.com/therermz" target="_blank" class="text-white text-header text-decoration-none link-header"> <span data-feather="twitter"></span> &nbsp; Me siga no twitter</a></li>
                         <li><a href="https://twitch.tv/therermz" target="_blank" class="text-white text-header text-decoration-none link-header"> <span data-feather="twitch"></span> &nbsp; Me
                                 siga na twitch</a></li>
-                        <li><a href="contato.php" class="text-white text-header text-decoration-none link-header"> <span data-feather="mail"></span> &nbsp; Email de contato</a></li>
+                        <li><a href="contato.php" class="text-white text-header text-decoration-none link-header disabled"> <span data-feather="mail"></span> &nbsp; Email de contato</a></li>
                         <li><a href="https://github.com/TheRermz" target="_blank" class="text-white text-header text-decoration-none link-header"> <span data-feather="github"></span> &nbsp; Github</a></li>
-                        <li><a href="portifolio.php" target="_blank" class="text-white text-header text-decoration-none link-header"> <span data-feather="file"></span>&nbsp; Portifólio</a></li>
+                        <li><a href="portifolio.php" target="_blank" class="text-white text-header text-decoration-none link-header disabled"> <span data-feather="file"></span>&nbsp; Portifólio</a></li>
                     </ul>
                 </div>
             </div>
@@ -35,8 +41,11 @@
 
 
             <div class="w-75 d-flex justify-content-md-end">
-                <a href="signin.php" class="btn btn-primary my-2 me-3 ">Login</a> <!-- if the user is logged in, it will show its username, and clicking will send to profile -->
-                <a href="logoff.php" class="btn btn-secondary my-2 ">Logoff</a> <!-- will show only if the user has logged in -->
+                <?php if (isset($_SESSION) && $_SESSION["user"] == '') { ?>
+                    <a href="signin.php" class="btn btn-primary my-2 me-3 ">Login</a> <!-- if the user is logged in, it will show its username, and clicking will send to profile -->
+                <?php } else { ?>
+                    <a href="logoff.php" class="btn btn-secondary my-2 ">Logoff</a> <!-- will show only if the user has logged in -->
+                <?php } ?>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
 
