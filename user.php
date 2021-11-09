@@ -60,6 +60,16 @@ if (isset($_SESSION["user_id"]) != '') {
         <p>Olá Usuário!</p>
         <div class="row g-3">
 
+            <?php
+            if (isset($_SESSION['notautheditor'])) {
+                echo '<div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">';
+                echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                echo $_SESSION['notautheditor'];
+                echo '</div>';
+                unset($_SESSION['notautheditor']);
+            }
+            ?>
+
             <div class="col-sm-6">
                 <label for="nome" class="form-label">Nome</label>
                 <input type="text" class="form-control" id="nome" placeholder="" value="<?php echo $resp['user_name'] ?>" readonly>
