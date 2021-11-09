@@ -3,7 +3,7 @@ require_once('connection/connect.php');
 if (!isset($_SESSION)) {
     session_start();
 }
-echo $_SESSION["type"]
+
 ?>
 
 
