@@ -1,5 +1,7 @@
 <?php
 require_once('../connection/connect.php');
+
+include('administrator.php');
 if (!isset($_SESSION)) {
     session_start();
 }
