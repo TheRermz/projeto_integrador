@@ -7,7 +7,7 @@ $resp = mysqli_fetch_assoc($qa);
 if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
     $id = $_GET["article_id"];
 
-    $sqlc = "SELECT articles.article_id, articles.article_name, articles.abstract, articles.reg_time, articles.reg_date, article_content FROM articles where article_id = $id";
+    $sqlc = "SELECT articles.article_id, articles.article_name, articles.author, articles.abstract, articles.reg_time, articles.reg_date, article_content, category.category_name FROM articles JOIN category ON articles.category_id = category.category_id where article_id = $id";
     $qc = mysqli_query($con, $sqlc);
     $respc = mysqli_fetch_assoc($qc);
 }
@@ -56,6 +56,8 @@ if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
                                                             $dpostDMY = strtotime($dpost);
                                                             $newdpost = date('d/m/Y', $dpostDMY);
                                                             echo $newdpost ?> às <?php echo $respc['reg_time'] ?></p>
+                <p class="h5 pb-2">Artigo publicado por: <i><?php echo $respc['author'] ?></i></p>
+                <p class="h5 pb-2">Categoria: <?php echo $respc['category_name'] ?> </p>
                 <hr class="my-4">
                 <div class="row row-cols-12 row-cols-sm-2 row-cols-md-3 g-3 py-2 m-1">
                     <div class="d-block w-100">
