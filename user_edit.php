@@ -81,10 +81,12 @@ if (isset($_GET["user_id"]) != '') {
         <a class="nav-link btn btn-secondary text-white mb-2 active" aria-current="page" href="user.php?">Usuário</a>
         <a class="nav-link btn btn-secondary text-white mb-2" href="user_edit.php?user_id=<?php echo $resp['user_id'] ?>">Alterar dados</a>
         <a class="nav-link btn btn-secondary text-white mb-2" href="deleteacc.php?user_id=<?php echo $resp['user_id'] ?>">Cancelar conta</a>
-        <!-- if user !== comum -->
-        <a class="nav-link btn btn-secondary text-white mb-2" href="admin/addarticle.php">Adicionar Artigo</a>
-        <!-- if user === administrativo -->
-        <a class="nav-link btn btn-secondary text-white mb-2" href="admin/admin.php">Administrativo</a>
+        <?php if ($_SESSION["type"] != 'comum') { ?>
+            <a class="nav-link btn btn-secondary text-white mb-2" href="admin/addarticle.php">Adicionar Artigo</a>
+        <?php } ?>
+        <?php if ($_SESSION['type'] == 'administrador') { ?>
+            <a class="nav-link btn btn-secondary text-white mb-2" href="admin/admin.php">Administrativo</a>
+        <?php } ?>
     </nav>
 
     <div class="col-12 container py-5">
@@ -117,7 +119,7 @@ if (isset($_GET["user_id"]) != '') {
                     <input type="email" class="form-control" name="email" id="email" placeholder="seu@email.com" value="<?php echo $resp['email'] ?>">
                 </div>
 
-                <!-- <div class="col-5">
+                <div class="col-5">
                     <label for="passwd" class="form-label">Senha atual</label>
                     <div class="input-group has-validation">
                         <input type="password" class="form-control" id="passwd" placeholder="Senha" name="passwd" disabled>
@@ -135,9 +137,9 @@ if (isset($_GET["user_id"]) != '') {
                             Favor repetir a senha.
                         </div>
                     </div>
-                </div> -->
+                </div>
 
-                <!-- <div class="col-2">
+                <div class="col-2">
                     <label>&nbsp;</label>
                     <div class="checkbox">
                         <label class="chbox mt-3">
@@ -145,55 +147,55 @@ if (isset($_GET["user_id"]) != '') {
 
                         </label>
                     </div>
-                </div> -->
+                </div>
 
 
                 <div class=" col-6">
-                    <label for="country" class="form-label">País</label>
-                    <select name="country" class="form-select" id="country">
-                        <?php do { ?>
+                                <label for="country" class="form-label">País</label>
+                                <select name="country" class="form-select" id="country">
+                                    <?php do { ?>
 
-                            <option value="<?php echo $respc['country_id']; ?>" <?php if ($respc['country_id'] === $resp['country_id']) {
-                                                                                    echo "selected";
-                                                                                } ?>><?php echo $respc['country_name_pt']; ?></option>
+                                        <option value="<?php echo $respc['country_id']; ?>" <?php if ($respc['country_id'] === $resp['country_id']) {
+                                                                                                echo "selected";
+                                                                                            } ?>><?php echo $respc['country_name_pt']; ?></option>
 
-                        <?php } while ($respc = mysqli_fetch_assoc($qc)); ?>
-                    </select>
+                                    <?php } while ($respc = mysqli_fetch_assoc($qc)); ?>
+                                </select>
+                    </div>
+
+                    <div class="col-6">
+                        <label for="state" class="form-label">Estado</label>
+                        <select name="state" class="form-select" id="state">
+                            <?php do { ?>
+                                <option value="<?php echo $resps['state_id'] ?>" <?php if ($resps['state_id'] === $resp['state_id']) {
+                                                                                        echo "selected";
+                                                                                    } ?>><?php echo $resps['state_abbr'] ?></option>
+                            <?php } while ($resps = mysqli_fetch_assoc($qs)); ?>
+                        </select>
+                    </div>
+
+                    <p class="h4">Informações adicionais</p>
+                    <div class="col-5">
+                        <label for="twitchuser" class="form-label"><span data-feather="twitch"></span> Username na twitch</label>
+                        <input type="text" class="form-control" id="twitchuser" name="twitchuser" placeholder="Seu username na twitch" value="<?php echo $resp['twitchuser'] ?>">
+
+                    </div>
+                    <div class="col-5">
+                        <label for="twitteruser" class="form-label"><span data-feather="twitter"></span> Username no twitter Twitter</label>
+                        <input type="text" class="form-control" id="twitteruser" name="twitteruser" placeholder="informe seu twitter" value="<?php echo $resp['twitteruser'] ?>">
+                    </div>
+                    <div class="col-2">
+                        <label for="birthdate" class="form-label"><span data-feather="calendar"></span> Data de Nascimento</label>
+                        <input class="form-control" type="date" name="birthdate" id="birthdate" value="<?php echo $resp['birthdate'] ?>">
+
+                    </div>
+                    <hr class="my-4">
+                    <div class="d-flex justify-content-center">
+                        <input type="hidden" name="update" value="update">
+                        <button type="submit" class="w-50 btn btn-primary btn-lg">Atualizar Cadastro</button>
+                    </div>
+
                 </div>
-
-                <div class="col-6">
-                    <label for="state" class="form-label">Estado</label>
-                    <select name="state" class="form-select" id="state">
-                        <?php do { ?>
-                            <option value="<?php echo $resps['state_id'] ?>" <?php if ($resps['state_id'] === $resp['state_id']) {
-                                                                                    echo "selected";
-                                                                                } ?>><?php echo $resps['state_abbr'] ?></option>
-                        <?php } while ($resps = mysqli_fetch_assoc($qs)); ?>
-                    </select>
-                </div>
-
-                <p class="h4">Informações adicionais</p>
-                <div class="col-5">
-                    <label for="twitchuser" class="form-label"><span data-feather="twitch"></span> Username na twitch</label>
-                    <input type="text" class="form-control" id="twitchuser" name="twitchuser" placeholder="Seu username na twitch" value="<?php echo $resp['twitchuser'] ?>">
-
-                </div>
-                <div class="col-5">
-                    <label for="twitteruser" class="form-label"><span data-feather="twitter"></span> Username no twitter Twitter</label>
-                    <input type="text" class="form-control" id="twitteruser" name="twitteruser" placeholder="informe seu twitter" value="<?php echo $resp['twitteruser'] ?>">
-                </div>
-                <div class="col-2">
-                    <label for="birthdate" class="form-label"><span data-feather="calendar"></span> Data de Nascimento</label>
-                    <input class="form-control" type="date" name="birthdate" id="birthdate" value="<?php echo $resp['birthdate'] ?>">
-
-                </div>
-                <hr class="my-4">
-                <div class="d-flex justify-content-center">
-                    <input type="hidden" name="update" value="update">
-                    <button type="submit" class="w-50 btn btn-primary btn-lg">Atualizar Cadastro</button>
-                </div>
-
-            </div>
         </form>
 
         <footer class="my-5 pt-5 text-muted text-center text-small">

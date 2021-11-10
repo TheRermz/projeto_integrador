@@ -117,6 +117,14 @@ if (!isset($_SESSION)) {
                     unset($_SESSION['logoff']);
                 }
 
+                if (isset($_SESSION['inactive'])) {
+                    echo '<div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">';
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                    echo $_SESSION['inactive'];
+                    echo '</div>';
+                    unset($_SESSION['inactive']);
+                }
+
 
 
 

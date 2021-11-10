@@ -22,6 +22,7 @@ if (isset($_POST["username"]) && $_POST["username"] != '' && isset($_POST["passw
         $_SESSION["type"] = $usrresp['user_type'];
         $_SESSION["ban"] = $usrresp['ban'];
         #  $_SESSION["passwd"] = $usrresp['md5_passwd'];
+        $_SESSION["status"] = $usrresp['user_status'];
         $_SESSION["name"] = $usrresp['user_name'];
         $_SESSION["surname"] = $usrresp['surname'];
         $_SESSION["email"] = $usrresp['email'];
@@ -40,6 +41,11 @@ if (isset($_POST["username"]) && $_POST["username"] != '' && isset($_POST["passw
         }
         if ($usrresp["ban"] == 1) {
             $_SESSION['banned'] = 'Este usuário está banido';
+            unset($_SESSION["user"], $_SESSION["type"]);
+            header('location:signin.php');
+        }
+        if ($usrresp['user_status'] == 0) {
+            $_SESSION["inactive"] = 'Este usuário está marcado como inativo no site. Para reverter a situação, entre em contato com o administrador';
             unset($_SESSION["user"], $_SESSION["type"]);
             header('location:signin.php');
         }

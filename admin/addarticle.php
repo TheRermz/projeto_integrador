@@ -1,6 +1,9 @@
 <?php
 require_once('../connection/connect.php');
 
+include('administrator.php');
+include('editor.php');
+
 $sqlcat = "SELECT * FROM category ORDER BY category_name ASC";
 $qcat = mysqli_query($con, $sqlcat);
 $respcat = mysqli_fetch_assoc($qcat);
