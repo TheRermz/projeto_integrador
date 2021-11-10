@@ -6,9 +6,9 @@ require_once('connection/connect.php');
 if (isset($_POST['delete']) && $_POST['delete'] === 'deleteacc') {
     $userid = $_POST["userid"];
     $sql = "DELETE FROM users WHERE user_id = $userid";
-    if (mysqli_query($con, $sql)) {
-
-        header('Location:index.php');
+    $sqlpasswd = "DELETE FROM paswd WHERE user_id = '$userid'";
+    if (mysqli_query($con, $sql) && mysqli_query($con, $sqlpasswd)) {
+        header('Location:logoff.php');
     } else {
         die("Erro  ao deletar usuario $userid: " . $sql . "<br>" . mysqli_error($con));
     }
