@@ -8,21 +8,20 @@ $sqlcat = "SELECT * FROM category ORDER BY category_name ASC";
 $qcat = mysqli_query($con, $sqlcat);
 $respcat = mysqli_fetch_assoc($qcat);
 
-if (isset($_POST["insert_article"]) && $_POST["insert_article"] === 'insert') {
+if (isset($_POST["editarticle"]) && $_POST["editarticle"] === 'edit') {
+    $id = $_POST['article_id'];;
     $title = mysqli_real_escape_string($con, $_POST["title"]);
     $category = $_POST["category"];
     $author = mysqli_real_escape_string($con, $_POST["author"]);
     $abstract = mysqli_real_escape_string($con, $_POST["abstract"]);
     $article = mysqli_real_escape_string($con, $_POST["txtarea"]);
 
-    $sql = "INSERT INTO articles(article_id, article_name, abstract, reg_time, reg_date, article_content, author, category_id) VALUES(0, '$title', '$abstract', CURRENT_TIME(), CURRENT_DATE(), '$article', '$author', '$category')";
+    $sql = "UPDATE articles SET article_name = '$title', abstract = '$abstract', author = '$author', article_content = '$article', category_id = '$category' where article_id = $id";
     if (mysqli_query($con, $sql)) {
         header('Location:../index.php');
     } else {
-        die('Erro ao adicionar o artigo ' . $con . ' e ' . $sql);
+        die('Erro ao adicionar o artigo ' . ' e ' . $sql);
     }
-} else {
-    #echo 'opa, tem um erro aí amigão';
 }
 
 if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
@@ -84,9 +83,9 @@ if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
                                 <div class="col-4">
                                     <label for="category" class="h4">Categoria do artigo</label>
                                     <select name="category" id="category" class="py-1 form-select">
-                                        <option value="<?php $respa['category_id'] ?>"><?php echo $respa['category_name'] ?></option>
+                                        <option value="">Selecione a Categoria</option>
                                         <?php do { ?>
-                                            <option value="<?php echo $respcat['category_id'] ?>"><?php echo $respcat['category_name'] ?></option>
+                                            <option value="<?php echo $respcat['category_id'] ?>" <?php if ($respcat['category_id'] == $respa['category_id']) echo 'selected'; ?>><?php echo $respcat['category_name'] ?></option>
                                         <?php } while ($respcat = mysqli_fetch_assoc($qcat)) ?>
                                     </select>
                                 </div>
@@ -105,22 +104,15 @@ if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
                                 <textarea name="abstract" id="abstract" class="w-100 form-control abstract" placeholder="Insira o Resumo do Artigo" rows="2" cols="12" maxlength="255"><?php echo $respa['abstract'] ?></textarea><span id="count" class="counter"></span>
                             </div>
                             <!-- howto? -->
-                            <div ng-app="textAngularTest" ng-controller="wysiwygeditor" class="container app py-2 mt-3">
-                                <h3>Escreva o Artigo</h3>
-                                <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled='disabled'></div>
-
-                                <textarea name="txtarea" id="txtarea" ng-model="htmlcontent" style="width: 100%" hidden></textarea>
-                                <div ng-bind-html="htmlcontent" hidden></div>
-                                <div ta-bind="text" ng-model="htmlcontent" ta-readonly='disabled' hidden>
-                                </div>
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end px-2 my-2">
-                                    <input type="hidden" name="insert_article" value="insert">
-                                    <button class="btn btn-primary me-md-2 btn-lg" type="submit">Adicionar Artigo</button>
-                                </div>
-                            </div>
-                    </form>
+                            <div><textarea name="txtarea" id="txtarea" class="form-control w-100"><?php echo $respa['article_content'] ?></textarea></div>
+                            <input type="hidden" name="article_id" value="<?php echo $respa['article_id'] ?>">
+                            <input type="hidden" name="editarticle" value="edit">
+                            <button class="btn btn-primary mt-3 me-md-2 btn-lg float-end" type="submit">Atualizar</button>
+                        </div>
                 </div>
+                </form>
             </div>
+        </div>
         </div>
     </main>
 

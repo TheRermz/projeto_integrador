@@ -20,7 +20,7 @@ if (isset($_GET["page"]) && !empty($_GET["page"])) {
     $currentpage = 1;
 }
 $url = "index.php?page=";
-#how many pages will be shown on the pages nav
+#how many articles will be shown on the page
 $pageqtd = 6;
 #starting value for limit clause
 $initial = ($currentpage * $pageqtd) - $pageqtd;

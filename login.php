@@ -1,7 +1,7 @@
 <?php
 require_once('connection/connect.php');
 
-# if there is no session active --> will start a session
+# if there is no active session --> will start a session
 if (!isset($_SESSION)) {
     session_start();
 }

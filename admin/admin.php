@@ -15,7 +15,7 @@ $sqlart = "SELECT * FROM articles";
 $qart = mysqli_query($con, $sqlart);
 $respart = mysqli_fetch_assoc($qart);
 
-#TODO PAGINATION
+
 
 ?>
 

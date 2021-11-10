@@ -18,8 +18,6 @@ if (isset($_POST["insert_article"]) && $_POST["insert_article"] === 'insert') {
     } else {
         die('Erro ao adicionar o artigo ' . $con . ' e ' . $sql);
     }
-} else {
-    #echo 'opa, tem um erro aí amigão';
 }
 
 if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
@@ -104,12 +102,9 @@ if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
                             <!-- howto? -->
                             <div ng-app="textAngularTest" ng-controller="wysiwygeditor" class="container app py-2 mt-3">
                                 <h3>Escreva o Artigo</h3>
-                                <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled='disabled'></div>
 
-                                <textarea name="txtarea" id="txtarea" ng-model="htmlcontent" style="width: 100%" hidden></textarea>
-                                <div ng-bind-html="htmlcontent" hidden></div>
-                                <div ta-bind="text" ng-model="htmlcontent" ta-readonly='disabled' hidden>
-                                </div>
+                                <textarea name="txtarea" id="txtarea" style="width: 100%"></textarea>
+
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end px-2 my-2">
                                     <input type="hidden" name="insert_article" value="insert">
                                     <button class="btn btn-primary me-md-2 btn-lg" type="submit">Adicionar Artigo</button>

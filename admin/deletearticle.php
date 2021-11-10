@@ -1,6 +1,9 @@
 <?php
 require_once('../connection/connect.php');
 
+include('administrator.php');
+include('editor.php');
+
 if (isset($_GET["article_id"]) && $_GET["article_id"] !== '') {
     $id = $_GET["article_id"];
 
